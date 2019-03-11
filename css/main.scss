@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+/**
+    Variables
+*/
+$black: #000;
+$red: rgb(255, 0, 0);
+$white: #fff;
+/**
+    Style
+*/
+body {
+    background-color: $black;
+    margin: 0;
+    font-family: 'Sniglet', cursive;
+
+
+
+    #login_page {
+        text-align: center;
+        padding-top: 200px; 
+        background-image: url(/images/background_login.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+
+        #main-header {
+    
+            .welcomeTitle {
+                display: inline-block;
+                margin: 15px 20px 30px 20px;
+                color: $white;
+    
+            }
+            .close {
+                background-color: $black;
+                border-radius: 10px;
+                color: $white;
+                height: 30px;
+                width: 30px;
+                right: 20px;
+                top: 20px;
+                position: absolute;
+                font-weight: 600;
+                border-color: $white;
+                cursor: pointer;
+            }
+        }
+            form {
+                margin: 20px auto;
+                max-width: 400px;
+                text-align: center;
+                border-style: solid;
+                border-color: $white;
+                border-width: 3px;
+                border-radius: 10px;
+                padding-top: 220px;
+                padding-bottom: 60px;
+                label {
+                    color: $white;
+                    float: left;
+                    margin-left: 80px;
+                }
+                
+                input[name='user'],
+                input[name='password'] {
+                    margin: 10px;
+                    padding: 10px 0 10px 34px;
+
+                }
+                input[type='button'] {
+                    margin: 10px;
+                    width: 275px;
+                    height: 35px;
+                    cursor: pointer;
+                    font-family: 'Sniglet', cursive;
+
+                }
+                .fa-user, .fa-lock {
+                    position: absolute;
+                    margin: 26px 0 0 25px;
+                }
+            }
+                #logo {
+                    position: absolute;
+                    top: 100px;
+                    margin-left: 10px;
+                    width: 280px;
+                }
+            #authenticationError {
+                color: $white;
+            }
+        }
+    #home_page {
+        text-align: center;
+        background-image: url(/images/background_home.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: none;
+        .welcomeUser {
+            color: $white;
+            font-size: 25px;
+        }
+        .companyTitle {
+            color: $white;
+            font-size: 30px;
+            margin-top: 0;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 400px calc(100% - 400px) ;
+        }
+        .sidepanel {
+            background-color: rgba(21, 18, 10, 0.5);
+            height: 100vh;
+        }
+    }
+
+
+}

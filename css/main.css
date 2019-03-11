@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Sniglet");
+/**
+    Variables
+*/
+/**
+    Style
+*/
+body {
+  background-color: #000;
+  margin: 0;
+  font-family: 'Sniglet', cursive;
+}
+
+body #login_page {
+  text-align: center;
+  padding-top: 200px;
+  background-image: url(/images/background_login.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+body #login_page #main-header .welcomeTitle {
+  display: inline-block;
+  margin: 15px 20px 30px 20px;
+  color: #fff;
+}
+
+body #login_page #main-header .close {
+  background-color: #000;
+  border-radius: 10px;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  right: 20px;
+  top: 20px;
+  position: absolute;
+  font-weight: 600;
+  border-color: #fff;
+  cursor: pointer;
+}
+
+body #login_page form {
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: center;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 3px;
+  border-radius: 10px;
+  padding-top: 220px;
+  padding-bottom: 60px;
+}
+
+body #login_page form label {
+  color: #fff;
+  float: left;
+  margin-left: 80px;
+}
+
+body #login_page form input[name='user'],
+body #login_page form input[name='password'] {
+  margin: 10px;
+  padding: 10px 0 10px 34px;
+}
+
+body #login_page form input[type='button'] {
+  margin: 10px;
+  width: 275px;
+  height: 35px;
+  cursor: pointer;
+  font-family: 'Sniglet', cursive;
+}
+
+body #login_page form .fa-user, body #login_page form .fa-lock {
+  position: absolute;
+  margin: 26px 0 0 25px;
+}
+
+body #login_page #logo {
+  position: absolute;
+  top: 100px;
+  margin-left: 10px;
+  width: 280px;
+}
+
+body #login_page #authenticationError {
+  color: #fff;
+}
+
+body #home_page {
+  text-align: center;
+  background-image: url(/images/background_home.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+body #home_page .welcomeUser {
+  color: #fff;
+  font-size: 25px;
+}
+
+body #home_page .companyTitle {
+  color: #fff;
+  font-size: 30px;
+  margin-top: 0;
+}
+
+body #home_page .grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 400px calc(100% - 400px);
+      grid-template-columns: 400px calc(100% - 400px);
+}
+
+body #home_page .sidepanel {
+  background-color: rgba(21, 18, 10, 0.5);
+  height: 100vh;
+}
+/*# sourceMappingURL=main.css.map */
