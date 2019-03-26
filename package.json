@@ -1,0 +1,23 @@
+{
+  "name": "database-interface",
+  "version": "1.0.0",
+  "description": "Base de datos para el Rincon de la Lectura",
+  "main": "script.js",
+  "scripts": {
+    "test": "node script.js",
+    "fulltable": "node fullTable.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Burinson/login.git"
+  },
+  "author": "Uriel Guzman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Burinson/login/issues"
+  },
+  "homepage": "https://github.com/Burinson/login#readme",
+  "dependencies": {
+    "pg": "^7.8.2"
+  }
+}
