@@ -1,19 +1,64 @@
-/**
- * Conexión de base de datos
- */
-const {Client} = require('pg')
-const client = new Client({
-    user: "postgres",
-    password: "salamance333",
-    host: "localhost",
-    port: 5432,
-    database: "postgres"
-})
+var users = {
+    "admin": "123"
+};
+var companyTitle = "El Rincón de la Lectura";
 
-client.connect()
-.then(() => console.log("Connected succesfully"))
-.then(() => client.query("select * from empleados where personid = $1", [123]))
-.then(results => console.table(results.rows))
-.catch(e => console.log(e))
-.finally(() => client.end())
+$(document).ready(function(){
+    $("#home_page").hide();
+    /**
+     * Permiso autorizado
+     */
+    function accessGranted(username, password) {
+        $("#login_page").fadeOut("slow");
+        $("#home_page").show();
+        $("#home_page .welcomeUser").text("Bienvenido, " + username);
+        $("#home_page .companyTitle").text(companyTitle);
+    }
+    /**
+     * Error de autenticación
+     */
+    function authenticationError(type) {
+        if (type == "invalid_username") {
+            $("#authenticationError").text("Nombre de usuario incorrecto");
+        } else if (type == "invalid_password") {
+            $("#authenticationError").text("Contraseña incorrecta");
+        } else {
+            $("#authenticationError").text("Los datos ingresados no son válidos");
+        }
+    }
+    /**
+     * Autenticación
+     */
+    $( "#login input[type='button']" ).click(function() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value; 
+        if (Object.keys(users).includes(username) && Object.values(users).includes(password)) {
+            accessGranted(username, password);
+        } else if (!Object.keys(users).includes(username) && Object.values(users).includes(password)) {
+            authenticationError("invalid_username");
+        } else if (!Object.values(users).includes(password) && Object.keys(users).includes(username)) {
+            authenticationError("invalid_password");
+        } else {
+            authenticationError("invalid_combination");
+        }
+    });
 
+    function loadJSON(callback) {
+        const data = '';
+        callback(JSON.parse(data));
+      }
+    
+      loadJSON(function(response) {
+        const $table = $('#bookDisplay');
+        Object.keys(response)
+          .forEach((key) => {
+            const field = response[key];
+            $table.append(
+              `<tr>
+              <td>${field.signup_date_time}</td>
+              <td>${field.package_id}</td>
+              <td>${field.total_leads}</td>
+              </tr>`);
+          });
+      });
+});
