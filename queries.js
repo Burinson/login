@@ -1,16 +1,18 @@
+/**
+ * Conexión a la base de datos
+ */
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: "postgres",
-  password: "salamance333",
-  host: "localhost",
-  port: 5432,
-  database: "postgres"
+  user:         "postgres",
+  password:     "salamance333",
+  host:         "localhost",
+  port:         5432,
+  database:     "postgres"
 })
 
  /**
-  * GET all books
+  * Generar objeto JSON con todo lo que está en la tabla "libros"
   */
-
 const getBooks = (request, response) => {
     pool.query('SELECT * FROM libros', (error, results) => {
         if(error) {
@@ -20,7 +22,7 @@ const getBooks = (request, response) => {
     })
 }
 /**
- * POST a new book
+ * Insertar valores del formulario en la tabla "libros"
  */
 const addBook = (request, response) => {
     const title         = request.body.title
@@ -29,7 +31,7 @@ const addBook = (request, response) => {
     const genre         = request.body.genre
     const isbn          = request.body.isbn
 
-    pool.query("INSERT INTO libros (titulo, autor, editorial, genero, isbn) VALUES ($1, $2, $3, $4, $5)",
+    pool.query("INSERT INTO libros (titulo, autor, editorial, genero, ISBN) VALUES ($1, $2, $3, $4, $5)",
     [title, author, editorial, genre, isbn],
     (error, results) => {
          if (error) {
@@ -39,6 +41,9 @@ const addBook = (request, response) => {
     })
 }
 
+/**
+ * Exporta funciones
+ */
 module.exports = {
     getBooks,
     addBook

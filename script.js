@@ -43,22 +43,24 @@ $(document).ready(function(){
         }
     });
 
-    function loadJSON(callback) {
-        const data = '';
-        callback(JSON.parse(data));
-      }
-    
-      loadJSON(function(response) {
-        const $table = $('#bookDisplay');
-        Object.keys(response)
-          .forEach((key) => {
-            const field = response[key];
-            $table.append(
-              `<tr>
-              <td>${field.signup_date_time}</td>
-              <td>${field.package_id}</td>
-              <td>${field.total_leads}</td>
-              </tr>`);
-          });
-      });
+    /**
+     * Recibe objeto JSON y lo muestra en tablas HTML
+     */
+    $.getJSON("http://localhost:3000/libros",
+        function (json) {
+            var tr;
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].id + "</td>");
+                tr.append("<td>" + json[i].titulo + "</td>");
+                tr.append("<td>" + json[i].autor + "</td>");
+                tr.append("<td>" + json[i].editorial + "</td>");
+                tr.append("<td>" + json[i].genero + "</td>");
+                tr.append("<td>" + json[i].isbn + "</td>");
+                $('table').append(tr);
+            }
+
+        });
+
+        
 });

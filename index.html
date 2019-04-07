@@ -7,9 +7,9 @@
     <title>Monocle</title>
     <link rel="shortcut icon" type="image/png" href="/images/favicon"/>
     <script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-              crossorigin="anonymous">
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -18,7 +18,7 @@
 <body>
     <div id="login_page">
         <div id="main-header">
-            <button class="close"">X</button>
+            <button class="close">X</button>
         </div>
             <form id="login">
                 <img id="logo" src="images/logo.png">
@@ -37,7 +37,8 @@
                     <h1 class="companyTitle"></h1>
                 </div>
                 <div class="grid-item">
-                        <form id = "addBook" method="POST" action="http://localhost:3000/libros">
+                        <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
+                        <form id = "addBook" method="POST" action="http://localhost:3000/libros" target="dummyframe">
                             <h1>Formulario para libros</h1>
                             <input id = "insertTitle" name = "title" placeholder = "Insertar título"><br>
                             <input id = "insertAuthor" name = "author" placeholder = "Insertar autor"><br>
@@ -47,12 +48,22 @@
                             <input type = "submit" value = "Registrar">
                         </form>
 
-                        <form id = "showBooks" method="GET" action="http://localhost:3000/libros">
+                        <form id = "showBooks" method="GET" action="http://localhost:3000/libros" target="dummyframe">
                             <input type = "submit" value = "Mostrar libros">
                         </form>
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Editorial</th>
+                                <th>Género</th>
+                                <th>ISBN</th>
+                            </tr>
+                        </table>
                 </div>
             </div>
             
     </div>
 </body>
-</html>
+</html> 

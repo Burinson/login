@@ -14,9 +14,12 @@ Lenguajes de programación
 Base de datos
     Postgres
 
+Herramientas
+    Version control con Git, Github
+
 Utilizar
     node index.js //Server running on port 3000
-    
+
             
         
 
