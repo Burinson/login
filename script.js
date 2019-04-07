@@ -1,3 +1,6 @@
+/**
+ * Credenciales de usuario
+ */
 var users = {
     "admin": "123"
 };
@@ -72,8 +75,27 @@ $(document).ready(function(){
                     tr.append("<td>" + json[i].editorial + "</td>");
                     tr.append("<td>" + json[i].genero + "</td>");
                     tr.append("<td>" + json[i].isbn + "</td>");
-                    $('table').append(tr);
+                    $('#book-table').append(tr);
             }
         });
-    });       
+    });    
+    
+    $( "#getBookById input[type='submit']" ).click(function() {
+        var id = document.getElementById("searchId").value;
+        $.getJSON("http://localhost:3000/libros/" + id,
+            function (json) {
+                var tr;
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + json[i].id + "</td>");
+                    tr.append("<td>" + json[i].titulo + "</td>");
+                    tr.append("<td>" + json[i].autor + "</td>");
+                    tr.append("<td>" + json[i].editorial + "</td>");
+                    tr.append("<td>" + json[i].genero + "</td>");
+                    tr.append("<td>" + json[i].isbn + "</td>");
+                    $('#book-table-search').append(tr);
+            }
+        });
+    });   
+    
 });

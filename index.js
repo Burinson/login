@@ -33,7 +33,9 @@ app.get('/', (request, response) => {
  * Llama a funciones exportadas
  */
 app.get('/libros', db.getBooks)
+app.get('/libros/:id', db.getBookById)
 app.post('/libros', db.addBook)
+
 
 /**
  * Mensaje de éxito al correr el servidor de Node.js

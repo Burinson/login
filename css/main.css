@@ -11,6 +11,10 @@ body {
   font-family: 'Sniglet', cursive;
 }
 
+body iframe {
+  display: none;
+}
+
 body #login_page {
   text-align: center;
   padding-top: 200px;
@@ -111,8 +115,8 @@ body #home_page .companyTitle {
 body #home_page .grid-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 600px calc(100% - 400px);
-      grid-template-columns: 600px calc(100% - 400px);
+  -ms-grid-columns: 700px calc(100% - 700px);
+      grid-template-columns: 700px calc(100% - 700px);
 }
 
 body #home_page .grid-container .grid-item {
@@ -134,10 +138,10 @@ body #home_page .grid-container .grid-item #addBook input[type='submit'] {
   width: 325px;
 }
 
-body #home_page .grid-container .grid-item #book-table {
+body #home_page .grid-container .grid-item table {
   margin: 0 auto;
   margin-top: 30px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   width: 90%;
   border-radius: 5px;
@@ -146,22 +150,27 @@ body #home_page .grid-container .grid-item #book-table {
   border-style: solid;
 }
 
-body #home_page .grid-container .grid-item #book-table tr {
+body #home_page .grid-container .grid-item table tr {
   border-radius: 5px;
   border-color: #fff;
   border-width: 1px;
   border-style: solid;
 }
 
-body #home_page .grid-container .grid-item #book-table tr td {
+body #home_page .grid-container .grid-item table tr td {
   border-color: #fff;
   border-width: 0.5px;
   border-style: solid;
+  padding: 15px;
 }
 
-body #home_page .grid-container .grid-item #book-table tr .attribute-title {
+body #home_page .grid-container .grid-item table tr .attribute-title {
   font-weight: bold;
   font-size: 16px;
+}
+
+body #home_page .grid-container .grid-item #getBookById {
+  margin-top: 30px;
 }
 
 body #home_page .sidepanel {

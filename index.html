@@ -16,6 +16,7 @@
     <script src="script.js"></script>
 </head>
 <body>
+    <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
     <div id="login_page">
         <div id="main-header">
             <button class="close">X</button>
@@ -35,7 +36,7 @@
                 <div class="grid-item sidepanel">
                     <p class="welcomeUser"></p>
                     <h1 class="companyTitle"></h1>
-                    <form id = "showBooks" method="GET" action="http://localhost:3000/libros" target="dummyframe">
+                    <form id = "showBooks" method="GET" action="http://localhost:3000/libros" target = "dummyframe">
                         <input type = "submit" value = "Mostrar libros">
                     </form>
                         
@@ -49,17 +50,32 @@
                                 <th class = "attribute-title">ISBN</th>
                             </tr>
                     </table>
+                    <form id = "getBookById" method="GET" action="http://localhost:3000/libros/" target = "dummyframe">
+                        <input id = "searchId" name = "id" placeholder = "Buscar por ID" target = "dummyframe">
+                        <input type = "submit" value = "Buscar libro">
+                    </form>
+                        
+                    <table id = "book-table-search">
+                            <tr>
+                                <th class = "attribute-title">ID</th>
+                                <th class = "attribute-title">Título</th>
+                                <th class = "attribute-title">Autor</th>
+                                <th class = "attribute-title">Editorial</th>
+                                <th class = "attribute-title">Género</th>
+                                <th class = "attribute-title">ISBN</th>
+                            </tr>
+                    </table>
+
                 </div>
                 <div class="grid-item">
-                        <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
                         <form id = "addBook" method="POST" action="http://localhost:3000/libros" target="dummyframe">
                             <h1 class = "form-title">Formulario para libros</h1>
-                            <input id = "insertTitle" name = "title" placeholder = "Insertar título"><br>
-                            <input id = "insertAuthor" name = "author" placeholder = "Insertar autor"><br>
-                            <input id = "insertEditorial" name = "editorial" placeholder = "Insertar editorial"><br>
-                            <input id = "insertGenre" name = "genre" placeholder = "Insertar género"><br>
-                            <input id = "insertIsbn" name = "isbn" placeholder = "Insertar ISBN"><br>
-                            <input type = "submit" value = "Registrar"> 
+                            <input id = "insertTitle"       name = "title"      placeholder = "Insertar título"     requiered><br>
+                            <input id = "insertAuthor"      name = "author"     placeholder = "Insertar autor"      requiered><br>
+                            <input id = "insertEditorial"   name = "editorial"  placeholder = "Insertar editorial"  requiered><br>
+                            <input id = "insertGenre"       name = "genre"      placeholder = "Insertar género"     requiered><br>
+                            <input id = "insertIsbn"        name = "isbn"       placeholder = "Insertar ISBN"       requiered><br>
+                            <input type = "submit"          value = "Registrar"> 
                         </form>
                 </div>
             </div>

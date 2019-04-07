@@ -42,9 +42,24 @@ const addBook = (request, response) => {
 }
 
 /**
+ * Consultas individuales
+ */
+const getBookById = (request, response) => {
+    const id = parseInt(request.params.id)
+  
+    pool.query('SELECT * FROM libros WHERE id = $1', [id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
+/**
  * Exporta funciones
  */
 module.exports = {
     getBooks,
-    addBook
+    addBook,
+    getBookById
   }

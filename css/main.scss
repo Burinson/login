@@ -13,6 +13,10 @@ body {
     margin: 0;
     font-family: 'Sniglet', cursive;
 
+    iframe {
+        display: none;
+    }
+
     #login_page {
         text-align: center;
         padding-top: 200px; 
@@ -107,7 +111,7 @@ body {
         }
         .grid-container {
             display: grid;
-            grid-template-columns: 600px calc(100% - 400px) ;
+            grid-template-columns: 700px calc(100% - 700px) ;
 
             .grid-item {
                 text-align: center;
@@ -127,10 +131,10 @@ body {
                         width: 325px;
                     }
                 }
-                #book-table {
+                table {
                     margin: 0 auto;
                     margin-top: 30px;
-                    background-color: rgba(0,0,0,0.4);
+                    background-color: rgba(0,0,0,0.5);
                     color:$white;
                     width: 90%;
                     border-radius: 5px;
@@ -148,6 +152,7 @@ body {
                             border-color: $white;
                             border-width: 0.5px;
                             border-style: solid;
+                            padding: 15px;
                         }
 
                         .attribute-title {
@@ -157,6 +162,9 @@ body {
                         }
                     }
                 }
+                #getBookById {
+                    margin-top: 30px;
+                } 
             }
         }
         .sidepanel {
