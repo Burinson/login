@@ -95,6 +95,7 @@ body {
         background-repeat: no-repeat;
         height: 100vh;
         display: none;
+
         .welcomeUser {
             color: $white;
             font-size: 25px;
@@ -106,7 +107,57 @@ body {
         }
         .grid-container {
             display: grid;
-            grid-template-columns: 400px calc(100% - 400px) ;
+            grid-template-columns: 600px calc(100% - 400px) ;
+
+            .grid-item {
+                text-align: center;
+                
+                #addBook {
+
+                    .form-title {
+                        color: $white
+                    }
+                    input {
+                        margin: 5px;
+                        padding: 5px;
+                        width: 300px;
+                    }
+                    input[type='submit'] {
+                        margin-top: 20px;
+                        width: 325px;
+                    }
+                }
+                #book-table {
+                    margin: 0 auto;
+                    margin-top: 30px;
+                    background-color: rgba(0,0,0,0.4);
+                    color:$white;
+                    width: 90%;
+                    border-radius: 5px;
+                    border-color: $white;
+                    border-width: 1px;
+                    border-style: solid;
+
+                    tr {
+                        border-radius: 5px;
+                        border-color: $white;
+                        border-width: 1px;
+                        border-style: solid;
+
+                        td {
+                            border-color: $white;
+                            border-width: 0.5px;
+                            border-style: solid;
+                        }
+
+                        .attribute-title {
+                            font-weight: bold;
+                            font-size: 16px;
+                            
+                        }
+                    }
+                }
+            }
         }
         .sidepanel {
             background-color: rgba(21, 18, 10, 0.5);

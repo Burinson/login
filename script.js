@@ -44,23 +44,36 @@ $(document).ready(function(){
     });
 
     /**
+     * Permite el login funcionar con tecla de "Enter"
+     */
+    $(function() {
+        $("form input").keypress(function (e) {
+            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+                $("#login input[type='button']").click();
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });
+
+    /**
      * Recibe objeto JSON y lo muestra en tablas HTML
      */
-    $.getJSON("http://localhost:3000/libros",
-        function (json) {
-            var tr;
-            for (var i = 0; i < json.length; i++) {
-                tr = $('<tr/>');
-                tr.append("<td>" + json[i].id + "</td>");
-                tr.append("<td>" + json[i].titulo + "</td>");
-                tr.append("<td>" + json[i].autor + "</td>");
-                tr.append("<td>" + json[i].editorial + "</td>");
-                tr.append("<td>" + json[i].genero + "</td>");
-                tr.append("<td>" + json[i].isbn + "</td>");
-                $('table').append(tr);
+    $( "#showBooks input[type='submit']" ).click(function() {
+        $.getJSON("http://localhost:3000/libros",
+            function (json) {
+                var tr;
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + json[i].id + "</td>");
+                    tr.append("<td>" + json[i].titulo + "</td>");
+                    tr.append("<td>" + json[i].autor + "</td>");
+                    tr.append("<td>" + json[i].editorial + "</td>");
+                    tr.append("<td>" + json[i].genero + "</td>");
+                    tr.append("<td>" + json[i].isbn + "</td>");
+                    $('table').append(tr);
             }
-
         });
-
-        
+    });       
 });

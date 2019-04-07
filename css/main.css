@@ -94,6 +94,7 @@ body #home_page {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  display: none;
 }
 
 body #home_page .welcomeUser {
@@ -110,8 +111,57 @@ body #home_page .companyTitle {
 body #home_page .grid-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 400px calc(100% - 400px);
-      grid-template-columns: 400px calc(100% - 400px);
+  -ms-grid-columns: 600px calc(100% - 400px);
+      grid-template-columns: 600px calc(100% - 400px);
+}
+
+body #home_page .grid-container .grid-item {
+  text-align: center;
+}
+
+body #home_page .grid-container .grid-item #addBook .form-title {
+  color: #fff;
+}
+
+body #home_page .grid-container .grid-item #addBook input {
+  margin: 5px;
+  padding: 5px;
+  width: 300px;
+}
+
+body #home_page .grid-container .grid-item #addBook input[type='submit'] {
+  margin-top: 20px;
+  width: 325px;
+}
+
+body #home_page .grid-container .grid-item #book-table {
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  width: 90%;
+  border-radius: 5px;
+  border-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+}
+
+body #home_page .grid-container .grid-item #book-table tr {
+  border-radius: 5px;
+  border-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+}
+
+body #home_page .grid-container .grid-item #book-table tr td {
+  border-color: #fff;
+  border-width: 0.5px;
+  border-style: solid;
+}
+
+body #home_page .grid-container .grid-item #book-table tr .attribute-title {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 body #home_page .sidepanel {
