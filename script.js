@@ -61,12 +61,13 @@ $(document).ready(function(){
     });
 
     /**
-     * Recibe objeto JSON y lo muestra en tablas HTML
+     * Muestra todos los libros de la base de datos
      */
     $( "#showBooks input[type='submit']" ).click(function() {
         $.getJSON("http://localhost:3000/libros",
             function (json) {
                 var tr;
+                $("#book-table").find("tr:gt(0)").remove();
                 for (var i = 0; i < json.length; i++) {
                     tr = $('<tr/>');
                     tr.append("<td>" + json[i].id + "</td>");
@@ -80,11 +81,15 @@ $(document).ready(function(){
         });
     });    
     
+    /**
+     * Busca y muestra libros por id
+     */
     $( "#getBookById input[type='submit']" ).click(function() {
         var id = document.getElementById("searchId").value;
         $.getJSON("http://localhost:3000/libros/" + id,
             function (json) {
                 var tr;
+                $("#book-table-search").find("tr:gt(0)").remove();
                 for (var i = 0; i < json.length; i++) {
                     tr = $('<tr/>');
                     tr.append("<td>" + json[i].id + "</td>");

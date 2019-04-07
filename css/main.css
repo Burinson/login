@@ -161,7 +161,8 @@ body #home_page .grid-container .grid-item table tr td {
   border-color: #fff;
   border-width: 0.5px;
   border-style: solid;
-  padding: 15px;
+  padding: 5px;
+  font-size: 14px;
 }
 
 body #home_page .grid-container .grid-item table tr .attribute-title {
