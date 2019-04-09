@@ -48,6 +48,7 @@
                                 <th class = "attribute-title">Editorial</th>
                                 <th class = "attribute-title">Género</th>
                                 <th class = "attribute-title">ISBN</th>
+                                <th class = "attribute-title">Ejemplar</th>
                             </tr>
                     </table>
                     <form id = "getBookById" method="GET" action="http://localhost:3000/libros/" target = "dummyframe">
@@ -63,6 +64,7 @@
                                 <th class = "attribute-title">Editorial</th>
                                 <th class = "attribute-title">Género</th>
                                 <th class = "attribute-title">ISBN</th>
+                                <th class = "attribute-title">Ejemplar</th>
                             </tr>
                     </table>
 
@@ -70,11 +72,12 @@
                 <div class="grid-item">
                         <form id = "addBook" method="POST" action="http://localhost:3000/libros" target="dummyframe">
                             <h1 class = "form-title">Formulario para libros</h1>
-                            <input id = "insertTitle"       name = "title"      placeholder = "Insertar título"     requiered><br>
-                            <input id = "insertAuthor"      name = "author"     placeholder = "Insertar autor"      requiered><br>
-                            <input id = "insertEditorial"   name = "editorial"  placeholder = "Insertar editorial"  requiered><br>
-                            <input id = "insertGenre"       name = "genre"      placeholder = "Insertar género"     requiered><br>
-                            <input id = "insertIsbn"        name = "isbn"       placeholder = "Insertar ISBN"       requiered><br>
+                            <input id = "insertTitle"       name = "title"          placeholder = "Título*"                   requiered><br>
+                            <input id = "insertAuthor"      name = "author"         placeholder = "Autor*"                    requiered><br>
+                            <input id = "insertEditorial"   name = "editorial"      placeholder = "Editorial*"                requiered><br>
+                            <input id = "insertGenre"       name = "genre"          placeholder = "Género*"                   requiered><br>
+                            <input id = "insertIsbn"        name = "isbn"           placeholder = "ISBN*"                     requiered><br>
+                            <input id = "insertCopyNum"     name = "copyNum"        placeholder = "Número de ejemplar*"       requiered><br>
                             <input type = "submit"          value = "Registrar"> 
                         </form>
                 </div>

@@ -115,8 +115,8 @@ body #home_page .companyTitle {
 body #home_page .grid-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 700px calc(100% - 700px);
-      grid-template-columns: 700px calc(100% - 700px);
+  -ms-grid-columns: 800px calc(100% - 800px);
+      grid-template-columns: 800px calc(100% - 800px);
 }
 
 body #home_page .grid-container .grid-item {

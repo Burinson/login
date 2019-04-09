@@ -14,7 +14,7 @@ const pool = new Pool({
   * Generar objeto JSON con todo lo que está en la tabla "libros"
   */
 const getBooks = (request, response) => {
-    pool.query('SELECT * FROM libros', (error, results) => {
+    pool.query('SELECT * FROM libros ORDER BY id ASC', (error, results) => {
         if(error) {
             throw error
         }
@@ -30,9 +30,10 @@ const addBook = (request, response) => {
     const editorial     = request.body.editorial
     const genre         = request.body.genre
     const isbn          = request.body.isbn
+    const copyNum  = request.body.copyNum
 
-    pool.query("INSERT INTO libros (titulo, autor, editorial, genero, ISBN) VALUES ($1, $2, $3, $4, $5)",
-    [title, author, editorial, genre, isbn],
+    pool.query("INSERT INTO libros (titulo, autor, editorial, genero, ISBN, num_ejemplar) VALUES ($1, $2, $3, $4, $5, $6)",
+    [title, author, editorial, genre, isbn, copyNum],
     (error, results) => {
          if (error) {
              throw error
