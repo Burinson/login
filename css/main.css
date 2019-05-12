@@ -141,17 +141,17 @@ body #home_page .grid-container .grid-item {
   text-align: center;
 }
 
-body #home_page .grid-container .grid-item #addBook .form-title {
+body #home_page .grid-container .grid-item #addBook .form-title, body #home_page .grid-container .grid-item #addUser .form-title {
   color: #fff;
 }
 
-body #home_page .grid-container .grid-item #addBook input {
+body #home_page .grid-container .grid-item #addBook input, body #home_page .grid-container .grid-item #addUser input {
   margin: 5px;
   padding: 5px;
   width: 300px;
 }
 
-body #home_page .grid-container .grid-item #addBook input[type='submit'] {
+body #home_page .grid-container .grid-item #addBook input[type='submit'], body #home_page .grid-container .grid-item #addUser input[type='submit'] {
   margin-top: 20px;
   width: 325px;
 }

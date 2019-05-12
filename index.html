@@ -97,53 +97,47 @@
                     <div class="grid-item sidepanel">
                         <p class="welcomeUser"></p>
                         <h1 class="companyTitle"></h1>
-                        <form id = "showBooks" method="GET" action="http://localhost:3000/libros" target = "dummyframe">
-                            <input type = "submit" value = "Mostrar libros">
+                        <form id = "showUsers" method="GET" action="http://localhost:3000/usuarios" target = "dummyframe">
+                            <input type = "submit" value = "Mostrar usuarios">
                         </form>
                         <div class = "table-wrapper">
-                                <div class = "table-scroll">
-                                    <table id = "book-table">
-                                            <tr class = "headers">
-                                                <th class = "attribute-title">ID</th>
-                                                <th class = "attribute-title">Título</th>
-                                                <th class = "attribute-title">Autor</th>
-                                                <th class = "attribute-title">Editorial</th>
-                                                <th class = "attribute-title">Género</th>
-                                                <th class = "attribute-title">ISBN</th>
-                                                <th class = "attribute-title">Ejemplar</th>
-                                            </tr>
-                                    </table>
-                                </div>
+                            <div class = "table-scroll">
+                                <table id = "user-table">
+                                        <tr class = "headers">
+                                            <th class = "attribute-title">ID</th>
+                                            <th class = "attribute-title">Nombre</th>
+                                            <th class = "attribute-title">Apellido</th>
+                                            <th class = "attribute-title">Tipo</th>
+                                            <th class = "attribute-title">Correo</th>
+                                        </tr>
+                                </table>
+                            </div>
                         </div>
     
-                        <form id = "getBookById" method="GET" action="http://localhost:3000/libros/" target = "dummyframe">
-                            <input id = "searchId" name = "id" placeholder = "Buscar por ID" target = "dummyframe" required>
-                            <input type = "submit" value = "Buscar libro">
+                        <form id = "getUserById" method="GET" action="http://localhost:3000/usuarios/" target = "dummyframe">
+                            <input id = "user_searchId" name = "user_id" placeholder = "Buscar por ID" target = "dummyframe" required>
+                            <input type = "submit" value = "Buscar usuario">
                         </form>
                             
-                        <table id = "book-table-search">
-                                <tr class = "headers">
-                                    <th class = "attribute-title">ID</th>
-                                    <th class = "attribute-title">Título</th>
-                                    <th class = "attribute-title">Autor</th>
-                                    <th class = "attribute-title">Editorial</th>
-                                    <th class = "attribute-title">Género</th>
-                                    <th class = "attribute-title">ISBN</th>
-                                    <th class = "attribute-title">Ejemplar</th>
-                                </tr>
+                        <table id = "user-table-search">
+                            <tr class = "headers">
+                                <th class = "attribute-title">ID</th>
+                                <th class = "attribute-title">Nombre</th>
+                                <th class = "attribute-title">Apellido</th>
+                                <th class = "attribute-title">Tipo</th>
+                                <th class = "attribute-title">Correo</th>
+                            </tr>
                         </table>
     
                     </div>
                     <div class="grid-item">
-                        <form id = "addBook" method="POST" action="http://localhost:3000/libros" target="dummyframe">
+                        <form id = "addUser" method="POST" action="http://localhost:3000/usuarios" target="dummyframe">
                             <h1 class = "form-title">Formulario para usuarios</h1>
-                            <input id = "insertTitle"       name = "title"          placeholder = "Título*"                   requiered><br>
-                            <input id = "insertAuthor"      name = "author"         placeholder = "Autor*"                    requiered><br>
-                            <input id = "insertEditorial"   name = "editorial"      placeholder = "Editorial*"                requiered><br>
-                            <input id = "insertGenre"       name = "genre"          placeholder = "Género*"                   requiered><br>
-                            <input id = "insertIsbn"        name = "isbn"           placeholder = "ISBN*"                     requiered><br>
-                            <input id = "insertCopyNum"     name = "copyNum"        placeholder = "Número de ejemplar*"       requiered><br>
-                            <input type = "submit"          value = "Registrar"> 
+                            <input id = "user_insertName"      name = "user_name"         placeholder = "Nombre"          requiered><br>
+                            <input id = "user_insertSurname"   name = "user_surname"      placeholder = "Apellido"        requiered><br>
+                            <input id = "user_insertType"      name = "user_type"         placeholder = "Tipo"            requiered><br>
+                            <input id = "user_insertEmail"     name = "user_email"        placeholder = "Correo"          requiered><br>
+                            <input type = "submit"             value = "Registrar"> 
                         </form>
                 </div>
             </div>   

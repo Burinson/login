@@ -82,12 +82,39 @@ $(document).ready(function(){
         });
     }
     refreshBooks();
+
+        /**
+     * Muestra todos los usuarios de la base de datos
+     */
+    function refreshUsers() {
+        $.getJSON("http://localhost:3000/usuarios",
+        function (json) {
+            var tr;
+            $("#user-table").find("tr:gt(0)").remove();
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].id           + "</td>");
+                tr.append("<td>" + json[i].nombre       + "</td>");
+                tr.append("<td>" + json[i].apellido     + "</td>");
+                tr.append("<td>" + json[i].tipo         + "</td>");
+                tr.append("<td>" + json[i].correo       + "</td>");
+                $('#user-table').append(tr);
+            }
+        });
+    }
+    refreshUsers();
     /**
      * Actualiza los libros
      */
     $( "#showBooks input[type='submit']" ).click(function() {
         refreshBooks();
-    });    
+    });   
+        /**
+     * Actualiza los usuarios
+     */
+    $( "#showUsers input[type='submit']" ).click(function() {
+        refreshUsers();
+    });   
     
     /**
      * Busca y muestra libros por id
@@ -116,9 +143,34 @@ $(document).ready(function(){
             }
 
         });
-    });   
+    }); 
+        /**
+     * Busca y muestra usuarios por id
+     */
+    $( "#getUserById input[type='submit']" ).click(function() {
+        var id = document.getElementById("user_searchId").value;
+        $.getJSON("http://localhost:3000/usuarios/" + id,
+            function (json) {
+                var tr;
+                if (!json.length) {
+                    alert("No existe ningún usuario con este ID");
+                    return false;
+                } else {
+                    $("#user-table-search").find("tr:gt(0)").remove();
+                    for (var i = 0; i < json.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + json[i].id           + "</td>");
+                        tr.append("<td>" + json[i].nombre       + "</td>");
+                        tr.append("<td>" + json[i].apellido     + "</td>");
+                        tr.append("<td>" + json[i].tipo         + "</td>");
+                        tr.append("<td>" + json[i].correo       + "</td>");
+                        $('#user-table-search').append(tr);
+                }
+            }
+        });
+    });    
     /**
-     * Previene que se suban formularios vacíos
+     * Previene que se suban formularios vacíos en libros
      */
     $('#addBook').submit(function() {
         if ($.trim($("#insertTitle").val())     === "" ||
@@ -127,6 +179,18 @@ $(document).ready(function(){
             $.trim($("#insertGenre").val())     === "" ||
             $.trim($("#insertIsbn").val())      === "" ||
             $.trim($("#insertCopyNum").val())   === "")  {
+            alert('No rellenaste todos los campos');
+            return false;
+        }
+    });
+        /**
+     * Previene que se suban formularios vacíos en usuarios
+     */
+    $('#addUser').submit(function() {
+        if ($.trim($("#user_insertName").val())     === "" ||
+            $.trim($("#user_insertSurname").val())  === "" ||
+            $.trim($("#user_insertType").val())     === "" ||
+            $.trim($("#user_insertEmail").val())    === "")  {
             alert('No rellenaste todos los campos');
             return false;
         }
