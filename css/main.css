@@ -97,8 +97,26 @@ body #home_page {
   background-image: url(/images/background_home.png);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
-  display: none;
+}
+
+body #home_page ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
+body #home_page li {
+  float: left;
+}
+
+body #home_page li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 body #home_page .welcomeUser {
@@ -136,6 +154,16 @@ body #home_page .grid-container .grid-item #addBook input {
 body #home_page .grid-container .grid-item #addBook input[type='submit'] {
   margin-top: 20px;
   width: 325px;
+}
+
+body #home_page .grid-container .grid-item .table-wrapper {
+  position: relative;
+}
+
+body #home_page .grid-container .grid-item .table-wrapper .table-scroll {
+  overflow: auto;
+  height: 525px;
+  margin-top: 20px;
 }
 
 body #home_page .grid-container .grid-item table {

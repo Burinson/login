@@ -19,7 +19,6 @@
     <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
     <div id="login_page">
         <div id="main-header">
-            <button class="close">X</button>
         </div>
             <form id="login">
                 <img id="logo" src="images/logo.png">
@@ -32,32 +31,43 @@
             <p id="authenticationError"></p>
         </div>
     <div id="home_page">
-            <div class="grid-container">
+        <!--Menu-->
+            <ul id = "navbar">
+                    <li><a id = "toggle_books" href="#libros">Libros</a></li>
+                    <li><a id = "toggle_users" href="#usuarios">Usuarios</a></li>
+                    <li><a id = "toggle_loans" href="#prestamos">Préstamos</a></li>
+            </ul>
+            <!--Libros-->
+            <div class="grid-container" id = "books_interface">
                 <div class="grid-item sidepanel">
                     <p class="welcomeUser"></p>
                     <h1 class="companyTitle"></h1>
                     <form id = "showBooks" method="GET" action="http://localhost:3000/libros" target = "dummyframe">
                         <input type = "submit" value = "Mostrar libros">
                     </form>
-                        
-                    <table id = "book-table">
-                            <tr>
-                                <th class = "attribute-title">ID</th>
-                                <th class = "attribute-title">Título</th>
-                                <th class = "attribute-title">Autor</th>
-                                <th class = "attribute-title">Editorial</th>
-                                <th class = "attribute-title">Género</th>
-                                <th class = "attribute-title">ISBN</th>
-                                <th class = "attribute-title">Ejemplar</th>
-                            </tr>
-                    </table>
+                    <div class = "table-wrapper">
+                            <div class = "table-scroll">
+                                    <table id = "book-table">
+                                            <tr class = "headers">
+                                                <th class = "attribute-title">ID</th>
+                                                <th class = "attribute-title">Título</th>
+                                                <th class = "attribute-title">Autor</th>
+                                                <th class = "attribute-title">Editorial</th>
+                                                <th class = "attribute-title">Género</th>
+                                                <th class = "attribute-title">ISBN</th>
+                                                <th class = "attribute-title">Ejemplar</th>
+                                            </tr>
+                                    </table>
+                                </div>
+                    </div>
+
                     <form id = "getBookById" method="GET" action="http://localhost:3000/libros/" target = "dummyframe">
                         <input id = "searchId" name = "id" placeholder = "Buscar por ID" target = "dummyframe" required>
                         <input type = "submit" value = "Buscar libro">
                     </form>
                         
                     <table id = "book-table-search">
-                            <tr>
+                            <tr class = "headers">
                                 <th class = "attribute-title">ID</th>
                                 <th class = "attribute-title">Título</th>
                                 <th class = "attribute-title">Autor</th>
@@ -82,7 +92,61 @@
                         </form>
                 </div>
             </div>
-            
-    </div>
+            <!--Usuarios-->
+            <div class="grid-container" id = "users_interface">
+                    <div class="grid-item sidepanel">
+                        <p class="welcomeUser"></p>
+                        <h1 class="companyTitle"></h1>
+                        <form id = "showBooks" method="GET" action="http://localhost:3000/libros" target = "dummyframe">
+                            <input type = "submit" value = "Mostrar libros">
+                        </form>
+                        <div class = "table-wrapper">
+                                <div class = "table-scroll">
+                                    <table id = "book-table">
+                                            <tr class = "headers">
+                                                <th class = "attribute-title">ID</th>
+                                                <th class = "attribute-title">Título</th>
+                                                <th class = "attribute-title">Autor</th>
+                                                <th class = "attribute-title">Editorial</th>
+                                                <th class = "attribute-title">Género</th>
+                                                <th class = "attribute-title">ISBN</th>
+                                                <th class = "attribute-title">Ejemplar</th>
+                                            </tr>
+                                    </table>
+                                </div>
+                        </div>
+    
+                        <form id = "getBookById" method="GET" action="http://localhost:3000/libros/" target = "dummyframe">
+                            <input id = "searchId" name = "id" placeholder = "Buscar por ID" target = "dummyframe" required>
+                            <input type = "submit" value = "Buscar libro">
+                        </form>
+                            
+                        <table id = "book-table-search">
+                                <tr class = "headers">
+                                    <th class = "attribute-title">ID</th>
+                                    <th class = "attribute-title">Título</th>
+                                    <th class = "attribute-title">Autor</th>
+                                    <th class = "attribute-title">Editorial</th>
+                                    <th class = "attribute-title">Género</th>
+                                    <th class = "attribute-title">ISBN</th>
+                                    <th class = "attribute-title">Ejemplar</th>
+                                </tr>
+                        </table>
+    
+                    </div>
+                    <div class="grid-item">
+                        <form id = "addBook" method="POST" action="http://localhost:3000/libros" target="dummyframe">
+                            <h1 class = "form-title">Formulario para usuarios</h1>
+                            <input id = "insertTitle"       name = "title"          placeholder = "Título*"                   requiered><br>
+                            <input id = "insertAuthor"      name = "author"         placeholder = "Autor*"                    requiered><br>
+                            <input id = "insertEditorial"   name = "editorial"      placeholder = "Editorial*"                requiered><br>
+                            <input id = "insertGenre"       name = "genre"          placeholder = "Género*"                   requiered><br>
+                            <input id = "insertIsbn"        name = "isbn"           placeholder = "ISBN*"                     requiered><br>
+                            <input id = "insertCopyNum"     name = "copyNum"        placeholder = "Número de ejemplar*"       requiered><br>
+                            <input type = "submit"          value = "Registrar"> 
+                        </form>
+                </div>
+            </div>   
+        </div>
 </body>
 </html> 

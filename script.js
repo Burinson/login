@@ -8,8 +8,7 @@ var companyTitle = "El Rincón de la Lectura";
 
 $(document).ready(function(){
     $("#home_page").hide();
-    $("#book-table").hide();
-    $("#book-table-search").hide();
+    $("#users_interface").hide();
     /**
      * Permiso autorizado
      */
@@ -61,27 +60,33 @@ $(document).ready(function(){
             }
         });
     });
-
     /**
      * Muestra todos los libros de la base de datos
      */
-    $( "#showBooks input[type='submit']" ).click(function() {
+    function refreshBooks() {
         $.getJSON("http://localhost:3000/libros",
-            function (json) {
-                var tr;
-                $("#book-table").toggle().find("tr:gt(0)").remove();
-                for (var i = 0; i < json.length; i++) {
-                    tr = $('<tr/>');
-                    tr.append("<td>" + json[i].id           + "</td>");
-                    tr.append("<td>" + json[i].titulo       + "</td>");
-                    tr.append("<td>" + json[i].autor        + "</td>");
-                    tr.append("<td>" + json[i].editorial    + "</td>");
-                    tr.append("<td>" + json[i].genero       + "</td>");
-                    tr.append("<td>" + json[i].isbn         + "</td>");
-                    tr.append("<td>" + json[i].num_ejemplar + "</td>")
-                    $('#book-table').append(tr);
+        function (json) {
+            var tr;
+            $("#book-table").find("tr:gt(0)").remove();
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].id           + "</td>");
+                tr.append("<td>" + json[i].titulo       + "</td>");
+                tr.append("<td>" + json[i].autor        + "</td>");
+                tr.append("<td>" + json[i].editorial    + "</td>");
+                tr.append("<td>" + json[i].genero       + "</td>");
+                tr.append("<td>" + json[i].isbn         + "</td>");
+                tr.append("<td>" + json[i].num_ejemplar + "</td>")
+                $('#book-table').append(tr);
             }
         });
+    }
+    refreshBooks();
+    /**
+     * Actualiza los libros
+     */
+    $( "#showBooks input[type='submit']" ).click(function() {
+        refreshBooks();
     });    
     
     /**
@@ -96,7 +101,7 @@ $(document).ready(function(){
                     alert("No existe ningún libro con este ID");
                     return false;
                 } else {
-                    $("#book-table-search").show().find("tr:gt(0)").remove();
+                    $("#book-table-search").find("tr:gt(0)").remove();
                     for (var i = 0; i < json.length; i++) {
                         tr = $('<tr/>');
                         tr.append("<td>" + json[i].id           + "</td>");
@@ -125,6 +130,20 @@ $(document).ready(function(){
             alert('No rellenaste todos los campos');
             return false;
         }
+    });
+        /**
+     * Mostrar interfaz para libros
+     */
+    $("#navbar #toggle_books").click(function() {
+        $("#books_interface").show();
+        $("#users_interface").hide();
+    });
+    /**
+     * Mostrar interfaz para usuarios
+     */
+    $("#navbar #toggle_users").click(function() {
+        $("#users_interface").show();
+        $("#books_interface").hide();
     });
     
 });

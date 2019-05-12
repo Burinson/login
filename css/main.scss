@@ -97,8 +97,26 @@ body {
         background-image: url(/images/background_home.png);
         background-size: cover;
         background-repeat: no-repeat;
-        height: 100vh;
-        display: none;
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+          }
+          
+          li {
+            float: left;
+          }
+          
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
 
         .welcomeUser {
             color: $white;
@@ -109,6 +127,7 @@ body {
             font-size: 30px;
             margin-top: 0;
         }
+
         .grid-container {
             display: grid;
             grid-template-columns: 800px calc(100% - 800px) ;
@@ -131,6 +150,17 @@ body {
                         width: 325px;
                     }
                 }
+                .table-wrapper {
+                    position: relative;
+
+                    .table-scroll {
+                        overflow: auto;
+                        height: 525px;
+                        margin-top: 20px;
+    
+                    }
+                }
+
                 table {
                     margin: 0 auto;
                     margin-top: 30px;
@@ -147,6 +177,7 @@ body {
                         border-color: $white;
                         border-width: 1px;
                         border-style: solid;
+                        
 
                         td {
                             border-color: $white;
@@ -163,6 +194,7 @@ body {
                         }
                     }
                 }
+
                 #getBookById {
                     margin-top: 30px;
                 } 
