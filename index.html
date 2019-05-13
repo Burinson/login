@@ -143,6 +143,55 @@
                         </form>
                 </div>
             </div> 
+            <!--Estudiantes-->
+            <div class="grid-container" id = "students_interface">
+                <div class="grid-item sidepanel">
+                    <p class="welcomeUser"></p>
+                    <h1 class="companyTitle"></h1>
+                    <form id = "showStudents" method="GET" action="http://localhost:3000/estudiantes" target = "dummyframe">
+                        <input type = "submit" value = "Mostrar estudiantes">
+                    </form>
+                    <div class = "table-wrapper">
+                        <div class = "table-scroll">
+                                <table id = "student-table">
+                                        <tr class = "headers">
+                                            <th class = "attribute-title">ID</th>
+                                            <th class = "attribute-title">Carrera</th>
+                                            <th class = "attribute-title">Nombre</th>
+                                            <th class = "attribute-title">Apellido</th>
+                                            <th class = "attribute-title">Correo</th>
+                                        </tr>
+                                </table>
+                            </div>
+                    </div>
+
+                    <form id = "getStudentById" method="GET" action="http://localhost:3000/estudiantes/" target = "dummyframe">
+                        <input id = "student_searchId" name = "student_id" placeholder = "Buscar por ID" target = "dummyframe" required>
+                        <input type = "submit" value = "Buscar estudiante">
+                    </form>
+                        
+                    <table id = "student-table-search">
+                            <tr class = "headers">
+                                <th class = "attribute-title">ID</th>
+                                <th class = "attribute-title">Carrera</th>
+                                <th class = "attribute-title">Nombre</th>
+                                <th class = "attribute-title">Apellido</th>
+                                <th class = "attribute-title">Correo</th>
+                            </tr>
+                    </table>
+
+                </div>
+                <div class="grid-item">
+                        <form id = "addStudent" method="POST" action="http://localhost:3000/estudiantes" target="dummyframe">
+                            <h1 class = "form-title">Formulario para estudiantes</h1>
+                            <input id = "student_insertMajor"         name = "student_major"   placeholder = "Carrera*"                   requiered><br>
+                            <input id = "student_insertName"          name = "student_name"         placeholder = "Nombre*"                    requiered><br>
+                            <input id = "student_insertSurname"       name = "student_surname"      placeholder = "Apellido*"                  requiered><br>
+                            <input id = "student_insertEmail"         name = "student_email"        placeholder = "Correo electrónico*"        requiered><br>
+                            <input type = "submit"                    value = "Registrar"> 
+                        </form>
+                </div>
+            </div> 
         </div>
 </body>
 </html> 

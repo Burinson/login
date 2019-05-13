@@ -9,6 +9,9 @@ var companyTitle = "El Rincón de la Lectura";
 $(document).ready(function(){
     $("#home_page").hide();
     $("#teachers_interface").hide();
+    $("#students_interface").hide();
+    $("#librarians_interface").hide();
+    $("#loans_interface").hide();
     /**
      * Permiso autorizado
      */
@@ -103,6 +106,27 @@ $(document).ready(function(){
         });
     }
     refreshTeachers();
+
+    /**
+     * Muestra todos los estudiantes de la base de datos
+     */
+    function refreshStudents() {
+        $.getJSON("http://localhost:3000/estudiantes",
+        function (json) {
+            var tr;
+            $("#student-table").find("tr:gt(0)").remove();
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].id           + "</td>");
+                tr.append("<td>" + json[i].carrera + "</td>");
+                tr.append("<td>" + json[i].nombre       + "</td>");
+                tr.append("<td>" + json[i].apellido     + "</td>");
+                tr.append("<td>" + json[i].correo       + "</td>");
+                $('#student-table').append(tr);
+            }
+        });
+    }
+    refreshStudents();
     /**
      * Actualiza los libros
      */
@@ -114,6 +138,12 @@ $(document).ready(function(){
      */
     $( "#showTeachers input[type='submit']" ).click(function() {
         refreshTeachers();
+    });   
+        /**
+     * Actualiza los estudiantes
+     */
+    $( "#showStudents input[type='submit']" ).click(function() {
+        refreshStudents();
     });   
     
     /**
@@ -171,6 +201,33 @@ $(document).ready(function(){
 
         });
     }); 
+            
+    /**
+     * Busca y muestra estudiantes por id
+     */
+    $( "#getStudentById input[type='submit']" ).click(function() {
+        var id = document.getElementById("student_searchId").value;
+        $.getJSON("http://localhost:3000/estudiantes/" + id,
+            function (json) {
+                var tr;
+                if (!json.length) {
+                    alert("No existe ningún estudiante con este ID");
+                    return false;
+                } else {
+                    $("#student-table-search").find("tr:gt(0)").remove();
+                    for (var i = 0; i < json.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + json[i].id           + "</td>");
+                        tr.append("<td>" + json[i].carrera + "</td>");
+                        tr.append("<td>" + json[i].nombre       + "</td>");
+                        tr.append("<td>" + json[i].apellido     + "</td>");
+                        tr.append("<td>" + json[i].correo       + "</td>");
+                        $('#student-table-search').append(tr);
+                }
+            }
+
+        });
+    }); 
     /**
      * Previene que se suban formularios vacíos en libros
      */
@@ -198,12 +255,28 @@ $(document).ready(function(){
         }
     });
 
+        /**
+     * Previene que se suban formularios vacíos en estudiantes
+     */
+    $('#addTeacher').submit(function() {
+        if ($.trim($("#student_insertMajor").val())      === "" ||
+            $.trim($("#student_insertName").val())       === "" ||
+            $.trim($("#student_insertSurname").val())    === "" ||
+            $.trim($("#student_insertEmail").val())      === "" )  {
+            alert('No rellenaste todos los campos');
+            return false;
+        }
+    });
+
     /**
      * Mostrar interfaz para libros
      */
     $("#navbar #toggle_books").click(function() {
         $("#books_interface").show();
         $("#users_interface").hide();
+        $("#students_interface").hide();
+        $("#librarians_interface").hide();
+        $("#loans_interface").hide();
     });
 
     /**
@@ -212,5 +285,38 @@ $(document).ready(function(){
     $("#navbar #toggle_teachers").click(function() {
         $("#teachers_interface").show();
         $("#books_interface").hide();
+        $("#students_interface").hide();
+        $("#librarians_interface").hide();
+        $("#loans_interface").hide();
+    });
+    /**
+     * Mostrar interfaz para estudiantes
+     */
+    $("#navbar #toggle_students").click(function() {
+        $("#students_interface").show();
+        $("#books_interface").hide();
+        $("#teachers_interface").hide();
+        $("#librarians_interface").hide();
+        $("#loans_interface").hide();
+    });
+        /**
+     * Mostrar interfaz para bibliotecarios
+     */
+    $("#navbar #toggle_librarians").click(function() {
+        $("#librarians_interface").show();
+        $("#books_interface").hide();
+        $("#teachers_interface").hide();
+        $("#students_interface").hide();
+        $("#loans_interface").hide();
+    });
+        /**
+     * Mostrar interfaz para préstamos
+     */
+    $("#navbar #toggle_loans").click(function() {
+        $("#loans_interface").show();
+        $("#books_interface").hide();
+        $("#teachers_interface").hide();
+        $("#librarians_interface").hide();
+        $("#students_interface").hide();
     });
 });
