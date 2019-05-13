@@ -135,7 +135,7 @@ body {
             .grid-item {
                 text-align: center;
                 
-                #addBook, #addUser {
+                #addBook, #addUser, #addStudent, #addTeacher {
 
                     .form-title {
                         color: $white
@@ -144,6 +144,11 @@ body {
                         margin: 5px;
                         padding: 5px;
                         width: 300px;
+                    }
+                    select {
+                        margin: 5px;
+                        padding: 5px;
+                        width: 325px;
                     }
                     input[type='submit'] {
                         margin-top: 20px;

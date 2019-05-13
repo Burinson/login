@@ -22,10 +22,10 @@ const getBooks = (request, response) => {
     })
 }
  /**
-  * Generar objeto JSON de usuarios
+  * Generar objeto JSON de maestros
   */
- const getUsers = (request, response) => {
-  pool.query('SELECT * FROM usuario ORDER BY id ASC', (error, results) => {
+ const getTeachers = (request, response) => {
+  pool.query('SELECT * FROM maestro ORDER BY id ASC', (error, results) => {
       if(error) {
           throw error
       }
@@ -41,7 +41,7 @@ const addBook = (request, response) => {
     const editorial     = request.body.editorial
     const genre         = request.body.genre
     const isbn          = request.body.isbn
-    const copyNum  = request.body.copyNum
+    const copyNum       = request.body.copyNum
 
     pool.query("INSERT INTO libros (titulo, autor, editorial, genero, ISBN, num_ejemplar) VALUES ($1, $2, $3, $4, $5, $6)",
     [title, author, editorial, genre, isbn, copyNum],
@@ -53,21 +53,21 @@ const addBook = (request, response) => {
     })
 }
 /**
- * Insertar valores del formulario en la tabla "usuario"
+ * Insertar valores del formulario en la tabla "maestro"
  */
-const addUser = (request, response) => {
-  const name      = request.body.user_name
-  const surname   = request.body.user_surname
-  const type      = request.body.user_type
-  const email     = request.body.user_email
+const addTeacher = (request, response) => {
+  const departamento  = request.body.teacher_department
+  const nombre        = request.body.teacher_name
+  const apellido      = request.body.teacher_surname
+  const correo        = request.body.teacher_email
 
-  pool.query("INSERT INTO usuario (nombre, apellido, tipo, correo) VALUES ($1, $2, $3, $4)",
-  [name, surname, type, email],
+  pool.query("INSERT INTO maestro (departamento, nombre, apellido, correo) VALUES ($1, $2, $3, $4)",
+  [departamento, nombre, apellido, correo],
   (error, results) => {
        if (error) {
            throw error
        }
-       response.status(201).send('Usuario añadido')
+       response.status(201).send('Maestro añadido')
   })
 }
 
@@ -84,20 +84,20 @@ const getBookById = (request, response) => {
       response.status(200).json(results.rows)
     })
   }
-
   /**
- * Consultas individuales para usuarios
+ * Consultas individuales para maestros
  */
-const getUserById = (request, response) => {
+const getTeacherById = (request, response) => {
   const id = parseInt(request.params.id)
 
-  pool.query('SELECT * FROM usuario WHERE id = $1', [id], (error, results) => {
+  pool.query('SELECT * FROM maestro WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error
     }
     response.status(200).json(results.rows)
   })
 }
+
 
 /**
  * Exporta funciones
@@ -106,7 +106,7 @@ module.exports = {
     getBooks,
     addBook,
     getBookById,
-    getUsers,
-    addUser,
-    getUserById
+    getTeachers,
+    addTeacher,
+    getTeacherById
   }

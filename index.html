@@ -33,9 +33,11 @@
     <div id="home_page">
         <!--Menu-->
             <ul id = "navbar">
-                    <li><a id = "toggle_books" href="#libros">Libros</a></li>
-                    <li><a id = "toggle_users" href="#usuarios">Usuarios</a></li>
-                    <li><a id = "toggle_loans" href="#prestamos">Préstamos</a></li>
+                    <li><a id = "toggle_books"      href = "#libros">Libros</a></li>
+                    <li><a id = "toggle_teachers"   href = "#maestros">Maestros</a></li>
+                    <li><a id = "toggle_students"   href = "#estudiantes">Estudiantes</a></li>
+                    <li><a id = "toggle_librarians" href = "#bibliotecarios">Bibliotecarios</a></li>
+                    <li><a id = "toggle_loans"      href = "#prestamos">Préstamos</a></li>
             </ul>
             <!--Libros-->
             <div class="grid-container" id = "books_interface">
@@ -91,56 +93,56 @@
                             <input type = "submit"          value = "Registrar"> 
                         </form>
                 </div>
-            </div>
-            <!--Usuarios-->
-            <div class="grid-container" id = "users_interface">
-                    <div class="grid-item sidepanel">
-                        <p class="welcomeUser"></p>
-                        <h1 class="companyTitle"></h1>
-                        <form id = "showUsers" method="GET" action="http://localhost:3000/usuarios" target = "dummyframe">
-                            <input type = "submit" value = "Mostrar usuarios">
-                        </form>
-                        <div class = "table-wrapper">
-                            <div class = "table-scroll">
-                                <table id = "user-table">
+            </div>  
+            <!--Maestros-->
+            <div class="grid-container" id = "teachers_interface">
+                <div class="grid-item sidepanel">
+                    <p class="welcomeUser"></p>
+                    <h1 class="companyTitle"></h1>
+                    <form id = "showTeachers" method="GET" action="http://localhost:3000/maestros" target = "dummyframe">
+                        <input type = "submit" value = "Mostrar maestros">
+                    </form>
+                    <div class = "table-wrapper">
+                        <div class = "table-scroll">
+                                <table id = "teacher-table">
                                         <tr class = "headers">
                                             <th class = "attribute-title">ID</th>
+                                            <th class = "attribute-title">Departamento</th>
                                             <th class = "attribute-title">Nombre</th>
                                             <th class = "attribute-title">Apellido</th>
-                                            <th class = "attribute-title">Tipo</th>
                                             <th class = "attribute-title">Correo</th>
                                         </tr>
                                 </table>
                             </div>
-                        </div>
-    
-                        <form id = "getUserById" method="GET" action="http://localhost:3000/usuarios/" target = "dummyframe">
-                            <input id = "user_searchId" name = "user_id" placeholder = "Buscar por ID" target = "dummyframe" required>
-                            <input type = "submit" value = "Buscar usuario">
-                        </form>
-                            
-                        <table id = "user-table-search">
+                    </div>
+
+                    <form id = "getTeacherById" method="GET" action="http://localhost:3000/maestros/" target = "dummyframe">
+                        <input id = "teacher_searchId" name = "teacher_id" placeholder = "Buscar por ID" target = "dummyframe" required>
+                        <input type = "submit" value = "Buscar maestro">
+                    </form>
+                        
+                    <table id = "teacher-table-search">
                             <tr class = "headers">
                                 <th class = "attribute-title">ID</th>
+                                <th class = "attribute-title">Departamento</th>
                                 <th class = "attribute-title">Nombre</th>
                                 <th class = "attribute-title">Apellido</th>
-                                <th class = "attribute-title">Tipo</th>
                                 <th class = "attribute-title">Correo</th>
                             </tr>
-                        </table>
-    
-                    </div>
-                    <div class="grid-item">
-                        <form id = "addUser" method="POST" action="http://localhost:3000/usuarios" target="dummyframe">
-                            <h1 class = "form-title">Formulario para usuarios</h1>
-                            <input id = "user_insertName"      name = "user_name"         placeholder = "Nombre"          requiered><br>
-                            <input id = "user_insertSurname"   name = "user_surname"      placeholder = "Apellido"        requiered><br>
-                            <input id = "user_insertType"      name = "user_type"         placeholder = "Tipo"            requiered><br>
-                            <input id = "user_insertEmail"     name = "user_email"        placeholder = "Correo"          requiered><br>
-                            <input type = "submit"             value = "Registrar"> 
+                    </table>
+
+                </div>
+                <div class="grid-item">
+                        <form id = "addTeacher" method="POST" action="http://localhost:3000/maestros" target="dummyframe">
+                            <h1 class = "form-title">Formulario para maestros</h1>
+                            <input id = "teacher_insertDepartment"    name = "teacher_department"   placeholder = "Departamento*"              requiered><br>
+                            <input id = "teacher_insertName"          name = "teacher_name"         placeholder = "Nombre*"                    requiered><br>
+                            <input id = "teacher_insertSurname"       name = "teacher_surname"      placeholder = "Apellido*"                  requiered><br>
+                            <input id = "teacher_insertEmail"         name = "teacher_email"        placeholder = "Correo electrónico*"        requiered><br>
+                            <input type = "submit"                    value = "Registrar"> 
                         </form>
                 </div>
-            </div>   
+            </div> 
         </div>
 </body>
 </html> 

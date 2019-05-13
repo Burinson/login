@@ -35,10 +35,9 @@ app.get('/', (request, response) => {
 app.get('/libros', db.getBooks)
 app.get('/libros/:id', db.getBookById)
 app.post('/libros', db.addBook)
-app.get('/usuarios', db.getUsers)
-app.get('/usuarios/:id', db.getUserById)
-app.post('/usuarios', db.addUser)
-
+app.get('/maestros', db.getTeachers)
+app.get('/maestros/:id', db.getTeacherById)
+app.post('/maestros', db.addTeacher)
 
 /**
  * Mensaje de éxito al correr el servidor de Node.js
