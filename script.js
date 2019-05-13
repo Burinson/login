@@ -127,6 +127,26 @@ $(document).ready(function(){
         });
     }
     refreshStudents();
+
+     /**
+     * Muestra todos los bibliotecarios de la base de datos
+     */
+    function refreshLibrarians() {
+        $.getJSON("http://localhost:3000/bibliotecarios",
+        function (json) {
+            var tr;
+            $("#librarian-table").find("tr:gt(0)").remove();
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].id           + "</td>");
+                tr.append("<td>" + json[i].nombre       + "</td>");
+                tr.append("<td>" + json[i].apellido     + "</td>");
+                tr.append("<td>" + json[i].contraseña       + "</td>");
+                $('#librarian-table').append(tr);
+            }
+        });
+    }
+    refreshLibrarians();
     /**
      * Actualiza los libros
      */
@@ -145,6 +165,13 @@ $(document).ready(function(){
     $( "#showStudents input[type='submit']" ).click(function() {
         refreshStudents();
     });   
+            /**
+     * Actualiza los estudiantes
+     */
+    $( "#showLibrarians input[type='submit']" ).click(function() {
+        refreshLibrarians();
+    });   
+    
     
     /**
      * Busca y muestra libros por id
@@ -228,6 +255,31 @@ $(document).ready(function(){
 
         });
     }); 
+        /**
+     * Busca y muestra bibliotecarios por id
+     */
+    $( "#getLibrarianById input[type='submit']" ).click(function() {
+        var id = document.getElementById("librarian_searchId").value;
+        $.getJSON("http://localhost:3000/bibliotecarios/" + id,
+            function (json) {
+                var tr;
+                if (!json.length) {
+                    alert("No existe ningún bibliotecario con este ID");
+                    return false;
+                } else {
+                    $("#librarian-table-search").find("tr:gt(0)").remove();
+                    for (var i = 0; i < json.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + json[i].id           + "</td>");
+                        tr.append("<td>" + json[i].nombre       + "</td>");
+                        tr.append("<td>" + json[i].apellido     + "</td>");
+                        tr.append("<td>" + json[i].contraseña       + "</td>");
+                        $('#librarian-table-search').append(tr);
+                }
+            }
+
+        });
+    }); 
     /**
      * Previene que se suban formularios vacíos en libros
      */
@@ -258,11 +310,25 @@ $(document).ready(function(){
         /**
      * Previene que se suban formularios vacíos en estudiantes
      */
-    $('#addTeacher').submit(function() {
+    $('#addStudent').submit(function() {
         if ($.trim($("#student_insertMajor").val())      === "" ||
             $.trim($("#student_insertName").val())       === "" ||
             $.trim($("#student_insertSurname").val())    === "" ||
             $.trim($("#student_insertEmail").val())      === "" )  {
+            alert('No rellenaste todos los campos');
+            return false;
+        }
+    });
+
+
+        /**
+     * Previene que se suban formularios vacíos en bibliotecarios
+     */
+    $('#addLibrarian').submit(function() {
+        if (
+            $.trim($("#librarian_insertName").val())       === "" ||
+            $.trim($("#librarian_insertSurname").val())    === "" ||
+            $.trim($("#librarian_insertPassword").val())   === "" )  {
             alert('No rellenaste todos los campos');
             return false;
         }

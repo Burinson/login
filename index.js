@@ -44,6 +44,10 @@ app.get('/estudiantes', db.getStudents)
 app.get('/estudiantes/:id', db.getStudentById)
 app.post('/estudiantes', db.addStudent)
 
+app.get('/bibliotecarios', db.getLibrarians)
+app.get('/bibliotecarios/:id', db.getLibrarianById)
+app.post('/bibliotecarios', db.addLibrarian)
+
 
 /**
  * Mensaje de éxito al correr el servidor de Node.js

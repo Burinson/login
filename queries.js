@@ -43,6 +43,17 @@ const getBooks = (request, response) => {
   response.status(200).json(results.rows)
   })
 }
+ /**
+  * Generar objeto JSON de bibliotecarios
+  */
+ const getLibrarians = (request, response) => {
+  pool.query('SELECT * FROM bibliotecario ORDER BY id ASC', (error, results) => {
+      if(error) {
+          throw error
+      }
+  response.status(200).json(results.rows)
+  })
+}
 /**
  * Insertar valores del formulario en la tabla "libros"
  */
@@ -100,6 +111,23 @@ const addStudent = (request, response) => {
   })
 }
 /**
+ * Insertar valores del formulario en la tabla "estudiante"
+ */
+const addLibrarian = (request, response) => {
+  const nombre        = request.body.librarian_name
+  const apellido      = request.body.librarian_surname
+  const contraseña    = request.body.librarian_password
+
+  pool.query("INSERT INTO bibliotecario (nombre, apellido, contraseña) VALUES ($1, $2, $3)",
+  [nombre, apellido, contraseña],
+  (error, results) => {
+       if (error) {
+           throw error
+       }
+       response.status(201).send('Bibliotecario añadido')
+  })
+}
+/**
  * Consultas individuales para libros
  */
 const getBookById = (request, response) => {
@@ -138,6 +166,19 @@ const getStudentById = (request, response) => {
     response.status(200).json(results.rows)
   })
 }
+  /**
+ * Consultas individuales para bibliotecarios
+ */
+const getLibrarianById = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('SELECT * FROM bibliotecario WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
 
 
 /**
@@ -147,10 +188,16 @@ module.exports = {
     getBooks,
     addBook,
     getBookById,
+
     getTeachers,
     addTeacher,
     getTeacherById,
+
     getStudents,
     addStudent,
-    getStudentById
+    getStudentById,
+
+    getLibrarians,
+    addLibrarian,
+    getLibrarianById
   }

@@ -184,7 +184,7 @@
                 <div class="grid-item">
                         <form id = "addStudent" method="POST" action="http://localhost:3000/estudiantes" target="dummyframe">
                             <h1 class = "form-title">Formulario para estudiantes</h1>
-                            <input id = "student_insertMajor"         name = "student_major"   placeholder = "Carrera*"                   requiered><br>
+                            <input id = "student_insertMajor"         name = "student_major"        placeholder = "Carrera*"                   requiered><br>
                             <input id = "student_insertName"          name = "student_name"         placeholder = "Nombre*"                    requiered><br>
                             <input id = "student_insertSurname"       name = "student_surname"      placeholder = "Apellido*"                  requiered><br>
                             <input id = "student_insertEmail"         name = "student_email"        placeholder = "Correo electrónico*"        requiered><br>
@@ -192,6 +192,52 @@
                         </form>
                 </div>
             </div> 
+                        <!--Bibliotecarios-->
+                        <div class="grid-container" id = "librarians_interface">
+                            <div class="grid-item sidepanel">
+                                <p class="welcomeUser"></p>
+                                <h1 class="companyTitle"></h1>
+                                <form id = "showLibrarians" method="GET" action="http://localhost:3000/bibliotecarios" target = "dummyframe">
+                                    <input type = "submit" value = "Mostrar bibliotecarios">
+                                </form>
+                                <div class = "table-wrapper">
+                                    <div class = "table-scroll">
+                                            <table id = "librarian-table">
+                                                    <tr class = "headers">
+                                                        <th class = "attribute-title">ID</th>
+                                                        <th class = "attribute-title">Nombre</th>
+                                                        <th class = "attribute-title">Apellido</th>
+                                                        <th class = "attribute-title">Contraseña</th>
+                                                    </tr>
+                                            </table>
+                                        </div>
+                                </div>
+            
+                                <form id = "getLibrarianById" method="GET" action="http://localhost:3000/bibliotecarios/" target = "dummyframe">
+                                    <input id = "librarian_searchId" name = "librarian_id" placeholder = "Buscar por ID" target = "dummyframe" required>
+                                    <input type = "submit" value = "Buscar bibliotecario">
+                                </form>
+                                    
+                                <table id = "librarian-table-search">
+                                        <tr class = "headers">
+                                            <th class = "attribute-title">ID</th>
+                                            <th class = "attribute-title">Nombre</th>
+                                            <th class = "attribute-title">Apellido</th>
+                                            <th class = "attribute-title">Contraseña</th>
+                                        </tr>
+                                </table>
+            
+                            </div>
+                            <div class="grid-item">
+                                    <form id = "addLibrarian" method="POST" action="http://localhost:3000/bibliotecarios" target="dummyframe">
+                                        <h1 class = "form-title">Formulario para bibliotecarios</h1>
+                                        <input id = "librarian_insertName"          name = "librarian_name"         placeholder = "Nombre*"                         requiered><br>
+                                        <input id = "librarian_insertSurname"       name = "librarian_surname"      placeholder = "Apellido*"                       requiered><br>
+                                        <input id = "librarian_insertPassword"      name = "librarian_password"     placeholder = "Contraseña*" type = "password"   requiered><br>
+                                        <input type = "submit"                      value = "Registrar"> 
+                                    </form>
+                            </div>
+                        </div> 
         </div>
 </body>
 </html> 
