@@ -257,6 +257,8 @@
                                                         <th class = "attribute-title">ID libro</th>
                                                         <th class = "attribute-title">Fecha de prestamo</th>
                                                         <th class = "attribute-title">Fecha de entrega</th>
+                                                        <th class = "attribute-title">Hora de prestamo</th>
+                                                        <th class = "attribute-title">Hora de entrega</th>
                                                     </tr>
                                             </table>
                                         </div>
@@ -276,6 +278,8 @@
                                             <th class = "attribute-title">ID libro</th>
                                             <th class = "attribute-title">Fecha de prestamo</th>
                                             <th class = "attribute-title">Fecha de entrega</th>
+                                            <th class = "attribute-title">Hora de prestamo</th>
+                                            <th class = "attribute-title">Hora de entrega</th>
                                         </tr>
                                 </table>
             
@@ -284,11 +288,11 @@
                                     <form id = "addLoan" method="POST" action="http://localhost:3000/prestamos" target="dummyframe">
                                         <h1 class = "form-title">Formulario para préstamos</h1>
                                         <input id = "loan_insertLibrarianId"        name = "loan_librarianId"    placeholder = "ID bibliotecario*"  requiered><br>
-                                        <input id = "loan_insertTeacherId"          name = "loan_teacherId"      placeholder = "ID maestro*"        requiered><br>
-                                        <input id = "loan_insertStudentId"          name = "loan_studentId"      placeholder = "ID estudiante*"     requiered><br>
+                                        <input id = "loan_insertTeacherId"          name = "loan_teacherId"      placeholder = "ID maestro"        ><br>
+                                        <input id = "loan_insertStudentId"          name = "loan_studentId"      placeholder = "ID estudiante"     ><br>
                                         <input id = "loan_insertBookId"             name = "loan_bookId"         placeholder = "ID libror*"         requiered><br>
-                                        <input id = "loan_insertLoanDate"           name = "loan_loanDate"       placeholder = "Fecha de préstamo*" requiered><br>
-                                        <input id = "loan_insertReturnDate"         name = "loan_returnDate"     placeholder = "Fecha de entrega"           ><br>
+                                        <input id = "loan_insertLoanDate"           type="date"                  name = "loan_loanDate"             placeholder = "Fecha de préstamo*" requiered><br>
+                                        <input id = "loan_insertReturnDate"         type="date"                  name = "loan_returnDate"           placeholder = "Fecha de entrega*"   requiered><br>
                                         <input type = "submit"                      value = "Registrar"> 
                                     </form>
                             </div>

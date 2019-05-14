@@ -142,21 +142,33 @@ const addLibrarian = (request, response) => {
  * Insertar valores del formulario en la tabla "préstamo"
  */
 const addLoan = (request, response) => {
-  const id_bibliotecario = request.body.loan_librarianId
-  const id_maestro       = request.body.loan_teacherId
-  const id_estudiante    = request.body.loan_studentId
-  const id_libro         = request.body.loan_bookId
-  const fecha_prestamo   = request.body.loan_loanDate
-  const fecha_entrega    = request.body.loan_returnDate
+  var id_bibliotecario = request.body.loan_librarianId
+  var id_maestro       = request.body.loan_teacherId
+  var id_estudiante    = request.body.loan_studentId
+  var id_libro         = request.body.loan_bookId
+  var fecha_prestamo   = request.body.loan_loanDate
+  var fecha_entrega    = request.body.loan_returnDate
 
-  pool.query("INSERT INTO prestamo (id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega) VALUES ($1, $2, $3, $4, $5, $6)",
-  [id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega],
-  (error, results) => {
-       if (error) {
-           throw error
-       }
-       response.status(201).send('Préstamo añadido')
-  })
+  var hora_prestamo = 'NOW()'
+  var hora_entrega = 'NOW()'
+
+  if(fecha_entrega == "") {
+    fecha_entrega = null;
+    hora_entrega = null;
+  }
+  if (id_maestro == "")
+    id_maestro = null;
+  else if (id_estudiante == "")
+      id_estudiante = null;
+    
+  pool.query("INSERT INTO prestamo (id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega, hora_prestamo, hora_entrega) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+    [id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega, hora_prestamo, hora_entrega],
+    (error, results) => {
+         if (error) {
+             throw error
+         }
+         response.status(201).send('Préstamo añadido')
+    })
 }
 /**
  * Consultas individuales para libros

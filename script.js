@@ -165,6 +165,8 @@ $(document).ready(function(){
                 tr.append("<td>" + json[i].id_libro         + "</td>");
                 tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
                 tr.append("<td>" + json[i].fecha_entrega    + "</td>");
+                tr.append("<td>" + json[i].hora_prestamo   + "</td>");
+                tr.append("<td>" + json[i].hora_entrega    + "</td>");
                 $('#loan-table').append(tr);
             }
         });
@@ -331,6 +333,8 @@ $(document).ready(function(){
                         tr.append("<td>" + json[i].id_libro         + "</td>");
                         tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
                         tr.append("<td>" + json[i].fecha_entrega    + "</td>");
+                        tr.append("<td>" + json[i].hora_prestamo   + "</td>");
+                        tr.append("<td>" + json[i].hora_entrega    + "</td>");
                         $('#loan-table-search').append(tr);
                 }
             }
@@ -397,14 +401,23 @@ $(document).ready(function(){
     $('#addLoan').submit(function() {
         if (
             $.trim($("#loan_insertLibrarianId").val())  === "" ||
-            $.trim($("#loan_insertTeacherId").val())    === "" ||
-            $.trim($("#loan_insertStudentId").val())    === "" ||
+            (
+            $.trim($("#loan_insertTeacherId").val())    === "" &&
+            $.trim($("#loan_insertStudentId").val())    === ""
+            ) ||
             $.trim($("#loan_insertBookId").val())       === "" ||
             $.trim($("#loan_insertLoanDate").val())     === ""
             ){
             alert('No rellenaste todos los campos');
             return false;
-        }
+        } else if (
+            (
+            $.trim($("#loan_insertTeacherId").val()) != "" &&
+            $.trim($("#loan_insertStudentId").val()) != "" 
+            )
+        ) 
+        alert("Elige estudiante o maestro");
+        return 0;
     });
 
     /**

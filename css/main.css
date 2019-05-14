@@ -133,8 +133,8 @@ body #home_page .companyTitle {
 body #home_page .grid-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 800px calc(100% - 800px);
-      grid-template-columns: 800px calc(100% - 800px);
+  -ms-grid-columns: 1200px calc(100% - 1200px);
+      grid-template-columns: 1200px calc(100% - 1200px);
 }
 
 body #home_page .grid-container .grid-item {
