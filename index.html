@@ -291,9 +291,15 @@
                                         <input id = "loan_insertTeacherId"          name = "loan_teacherId"      placeholder = "ID maestro"        ><br>
                                         <input id = "loan_insertStudentId"          name = "loan_studentId"      placeholder = "ID estudiante"     ><br>
                                         <input id = "loan_insertBookId"             name = "loan_bookId"         placeholder = "ID libror*"         requiered><br>
-                                        <input id = "loan_insertLoanDate"           type="date"                  name = "loan_loanDate"             placeholder = "Fecha de préstamo*" requiered><br>
-                                        <input id = "loan_insertReturnDate"         type="date"                  name = "loan_returnDate"           placeholder = "Fecha de entrega*"   requiered><br>
+                                        <input id = "loan_insertLoanDate"           type = "date"                name = "loan_loanDate"           placeholder = "Fecha de préstamo*"   requiered><br>
                                         <input type = "submit"                      value = "Registrar"> 
+                                    </form>
+
+                                    <form id = "addReturn" method="POST" action="http://localhost:3000/devoluciones" target="dummyframe">
+                                        <h1 class = "form-title">¿Devolución?</h1>
+                                        <input id = "return_insertLoanId"        name = "return_loanId"           placeholder = "ID prestamo*"       requiered><br>
+                                        <input id = "return_insertReturnDate"    type = "date"                  name = "return_returnDate"           placeholder = "Fecha de entrega*"   requiered><br>
+                                        <input type = "submit"                 value = "Registrar"> 
                                     </form>
                             </div>
                         </div> 

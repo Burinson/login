@@ -141,23 +141,23 @@ body #home_page .grid-container .grid-item {
   text-align: center;
 }
 
-body #home_page .grid-container .grid-item #addBook .form-title, body #home_page .grid-container .grid-item #addUser .form-title, body #home_page .grid-container .grid-item #addStudent .form-title, body #home_page .grid-container .grid-item #addTeacher .form-title, body #home_page .grid-container .grid-item #addLibrarian .form-title, body #home_page .grid-container .grid-item #addLoan .form-title {
+body #home_page .grid-container .grid-item #addBook .form-title, body #home_page .grid-container .grid-item #addUser .form-title, body #home_page .grid-container .grid-item #addStudent .form-title, body #home_page .grid-container .grid-item #addTeacher .form-title, body #home_page .grid-container .grid-item #addLibrarian .form-title, body #home_page .grid-container .grid-item #addLoan .form-title, body #home_page .grid-container .grid-item #addReturn .form-title {
   color: #fff;
 }
 
-body #home_page .grid-container .grid-item #addBook input, body #home_page .grid-container .grid-item #addUser input, body #home_page .grid-container .grid-item #addStudent input, body #home_page .grid-container .grid-item #addTeacher input, body #home_page .grid-container .grid-item #addLibrarian input, body #home_page .grid-container .grid-item #addLoan input {
+body #home_page .grid-container .grid-item #addBook input, body #home_page .grid-container .grid-item #addUser input, body #home_page .grid-container .grid-item #addStudent input, body #home_page .grid-container .grid-item #addTeacher input, body #home_page .grid-container .grid-item #addLibrarian input, body #home_page .grid-container .grid-item #addLoan input, body #home_page .grid-container .grid-item #addReturn input {
   margin: 5px;
   padding: 5px;
   width: 300px;
 }
 
-body #home_page .grid-container .grid-item #addBook select, body #home_page .grid-container .grid-item #addUser select, body #home_page .grid-container .grid-item #addStudent select, body #home_page .grid-container .grid-item #addTeacher select, body #home_page .grid-container .grid-item #addLibrarian select, body #home_page .grid-container .grid-item #addLoan select {
+body #home_page .grid-container .grid-item #addBook select, body #home_page .grid-container .grid-item #addUser select, body #home_page .grid-container .grid-item #addStudent select, body #home_page .grid-container .grid-item #addTeacher select, body #home_page .grid-container .grid-item #addLibrarian select, body #home_page .grid-container .grid-item #addLoan select, body #home_page .grid-container .grid-item #addReturn select {
   margin: 5px;
   padding: 5px;
   width: 325px;
 }
 
-body #home_page .grid-container .grid-item #addBook input[type='submit'], body #home_page .grid-container .grid-item #addUser input[type='submit'], body #home_page .grid-container .grid-item #addStudent input[type='submit'], body #home_page .grid-container .grid-item #addTeacher input[type='submit'], body #home_page .grid-container .grid-item #addLibrarian input[type='submit'], body #home_page .grid-container .grid-item #addLoan input[type='submit'] {
+body #home_page .grid-container .grid-item #addBook input[type='submit'], body #home_page .grid-container .grid-item #addUser input[type='submit'], body #home_page .grid-container .grid-item #addStudent input[type='submit'], body #home_page .grid-container .grid-item #addTeacher input[type='submit'], body #home_page .grid-container .grid-item #addLibrarian input[type='submit'], body #home_page .grid-container .grid-item #addLoan input[type='submit'], body #home_page .grid-container .grid-item #addReturn input[type='submit'] {
   margin-top: 20px;
   width: 325px;
 }

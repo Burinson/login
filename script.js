@@ -165,8 +165,8 @@ $(document).ready(function(){
                 tr.append("<td>" + json[i].id_libro         + "</td>");
                 tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
                 tr.append("<td>" + json[i].fecha_entrega    + "</td>");
-                tr.append("<td>" + json[i].hora_prestamo   + "</td>");
-                tr.append("<td>" + json[i].hora_entrega    + "</td>");
+                tr.append("<td>" + json[i].hora_prestamo    + "</td>");
+                tr.append("<td>" + json[i].hora_entrega     + "</td>");
                 $('#loan-table').append(tr);
             }
         });

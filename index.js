@@ -52,6 +52,8 @@ app.get('/prestamos', db.getLoans)
 app.get('/prestamos/:id_prestamo', db.getLoanById)
 app.post('/prestamos', db.addLoan)
 
+app.post('/devoluciones', db.addReturn)
+
 
 /**
  * Mensaje de éxito al correr el servidor de Node.js

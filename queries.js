@@ -150,12 +150,8 @@ const addLoan = (request, response) => {
   var fecha_entrega    = request.body.loan_returnDate
 
   var hora_prestamo = 'NOW()'
-  var hora_entrega = 'NOW()'
+  var hora_entrega = null
 
-  if(fecha_entrega == "") {
-    fecha_entrega = null;
-    hora_entrega = null;
-  }
   if (id_maestro == "")
     id_maestro = null;
   else if (id_estudiante == "")
@@ -168,6 +164,21 @@ const addLoan = (request, response) => {
              throw error
          }
          response.status(201).send('Préstamo añadido')
+    })
+}
+/**
+ * MODIFICAR valores del formulario en la tabla "préstamo"
+ */
+const addReturn = (request, response) => {
+  var id_prestamo = request.body.return_loanId
+  var fecha_entrega = request.body.return_returnDate
+    
+  pool.query("UPDATE prestamo SET fecha_entrega = $1, hora_entrega = NOW() WHERE id_prestamo = $2", [fecha_entrega, id_prestamo],
+    (error, results) => {
+         if (error) {
+             throw error
+         }
+         response.status(201).send('Préstamo modificado')
     })
 }
 /**
@@ -260,4 +271,6 @@ module.exports = {
     getLoans,
     addLoan,
     getLoanById,
+
+    addReturn
   }
