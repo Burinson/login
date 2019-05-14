@@ -412,7 +412,32 @@ $(document).ready(function(){
                     s_editorial + "\n" +
                     s_genero + "\n" +
                     s_isbn + "\n" + 
-                    "Ejemplar" + " " + s_num_ejemplar
+                    "Ejemplar" + " " + s_num_ejemplar + "\n\n\n"
+
+                    var start = new Date(json[0].fecha_prestamo);
+                    var end = new Date(json[0].fecha_entrega);
+
+                    var diff = end.getTime() - start.getTime();
+                    var day = 1000*60*60*24;
+                    
+                    console.log(diff); 
+
+                    if (s_id_estudiante != 'null') {
+                        if (diff > 7*day) {
+                            var penalization = (diff - 7)/day;
+                            body += "Penalización de " + Math.floor(penalization).toString() + " " + "días \n" + 
+                            "Monto a pagar: $" + Math.floor(penalization*5).toString() + "\n\n";  
+                        }
+
+                    } else {
+                        if (diff > 14*day) {
+                            var penalization = (dif - 7)/day;
+                            body += "Penalización de " + Math.floor(penalization).toString() + " " + "días \n" +
+                            "Monto a pagar: $" + Math.floor(penalization*5).toString() + "\n\n";  
+                        }
+                    }
+
+
 
                     doc.text(
                         body,
@@ -498,6 +523,27 @@ $(document).ready(function(){
             )
         ) {
             alert("Elige estudiante o maestro");
+            return false;
+        }
+        var d = new Date($.trim($("#loan_insertLoanDate").val()));
+        var n = d.getDay()
+        console.log(n);
+        console.log($.trim($("#loan_insertBookId").val()))
+        if ($.trim($("#loan_insertBookId").val())  == 1 && n != 5) {
+            alert("El ejemplar 1 solo se saca los viernes");
+            return false;
+        }
+    });
+  
+
+        /**
+     * Previene que se suban formularios vacíos en tickets
+     */
+    $('#getTicket').submit(function() {
+        if (
+            $.trim($("#ticket_searchId").val())  === ""
+            ){
+            alert('No rellenaste todos los campos');
             return false;
         }
     });
