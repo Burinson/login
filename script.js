@@ -141,12 +141,35 @@ $(document).ready(function(){
                 tr.append("<td>" + json[i].id           + "</td>");
                 tr.append("<td>" + json[i].nombre       + "</td>");
                 tr.append("<td>" + json[i].apellido     + "</td>");
-                tr.append("<td>" + json[i].contraseña       + "</td>");
+                tr.append("<td>" + json[i].contraseña   + "</td>");
                 $('#librarian-table').append(tr);
             }
         });
     }
     refreshLibrarians();
+
+         /**
+     * Muestra todos los préstamos de la base de datos
+     */
+    function refreshLoans() {
+        $.getJSON("http://localhost:3000/prestamos",
+        function (json) {
+            var tr;
+            $("#loan-table").find("tr:gt(0)").remove();
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].id_prestamo      + "</td>");
+                tr.append("<td>" + json[i].id_bibliotecario + "</td>");
+                tr.append("<td>" + json[i].id_maestro       + "</td>");
+                tr.append("<td>" + json[i].id_estudiante    + "</td>");
+                tr.append("<td>" + json[i].id_libro         + "</td>");
+                tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
+                tr.append("<td>" + json[i].fecha_entrega    + "</td>");
+                $('#loan-table').append(tr);
+            }
+        });
+    }
+    refreshLoans();
     /**
      * Actualiza los libros
      */
@@ -159,18 +182,24 @@ $(document).ready(function(){
     $( "#showTeachers input[type='submit']" ).click(function() {
         refreshTeachers();
     });   
-        /**
+    /**
      * Actualiza los estudiantes
      */
     $( "#showStudents input[type='submit']" ).click(function() {
         refreshStudents();
     });   
-            /**
+    /**
      * Actualiza los estudiantes
      */
     $( "#showLibrarians input[type='submit']" ).click(function() {
         refreshLibrarians();
-    });   
+    });  
+    /**
+     * Actualiza los préstamos
+     */
+    $( "#showLoans input[type='submit']" ).click(function() {
+        refreshLoans();
+    });  
     
     
     /**
@@ -281,6 +310,34 @@ $(document).ready(function(){
         });
     }); 
     /**
+     * Busca y muestra préstamos por id
+     */
+    $( "#getLoanById input[type='submit']" ).click(function() {
+        var id = document.getElementById("loan_searchId").value;
+        $.getJSON("http://localhost:3000/prestamos/" + id,
+            function (json) {
+                var tr;
+                if (!json.length) {
+                    alert("No existe ningún préstamo con este ID");
+                    return false;
+                } else {
+                    $("#loan-table-search").find("tr:gt(0)").remove();
+                    for (var i = 0; i < json.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + json[i].id_prestamo      + "</td>");
+                        tr.append("<td>" + json[i].id_bibliotecario + "</td>");
+                        tr.append("<td>" + json[i].id_maestro       + "</td>");
+                        tr.append("<td>" + json[i].id_estudiante    + "</td>");
+                        tr.append("<td>" + json[i].id_libro         + "</td>");
+                        tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
+                        tr.append("<td>" + json[i].fecha_entrega    + "</td>");
+                        $('#loan-table-search').append(tr);
+                }
+            }
+
+        });
+    }); 
+    /**
      * Previene que se suban formularios vacíos en libros
      */
     $('#addBook').submit(function() {
@@ -321,7 +378,7 @@ $(document).ready(function(){
     });
 
 
-        /**
+    /**
      * Previene que se suban formularios vacíos en bibliotecarios
      */
     $('#addLibrarian').submit(function() {
@@ -329,6 +386,22 @@ $(document).ready(function(){
             $.trim($("#librarian_insertName").val())       === "" ||
             $.trim($("#librarian_insertSurname").val())    === "" ||
             $.trim($("#librarian_insertPassword").val())   === "" )  {
+            alert('No rellenaste todos los campos');
+            return false;
+        }
+    });
+
+    /**
+     * Previene que se suban formularios vacíos en préstamos
+     */
+    $('#addLoan').submit(function() {
+        if (
+            $.trim($("#loan_insertLibrarianId").val())  === "" ||
+            $.trim($("#loan_insertTeacherId").val())    === "" ||
+            $.trim($("#loan_insertStudentId").val())    === "" ||
+            $.trim($("#loan_insertBookId").val())       === "" ||
+            $.trim($("#loan_insertLoanDate").val())     === ""
+            ){
             alert('No rellenaste todos los campos');
             return false;
         }

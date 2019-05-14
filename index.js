@@ -48,6 +48,10 @@ app.get('/bibliotecarios', db.getLibrarians)
 app.get('/bibliotecarios/:id', db.getLibrarianById)
 app.post('/bibliotecarios', db.addLibrarian)
 
+app.get('/prestamos', db.getLoans)
+app.get('/prestamos/:id_prestamo', db.getLoanById)
+app.post('/prestamos', db.addLoan)
+
 
 /**
  * Mensaje de éxito al correr el servidor de Node.js

@@ -238,6 +238,61 @@
                                     </form>
                             </div>
                         </div> 
+                        <!--Préstamos-->
+                        <div class="grid-container" id = "loans_interface">
+                            <div class="grid-item sidepanel">
+                                <p class="welcomeUser"></p>
+                                <h1 class="companyTitle"></h1>
+                                <form id = "showLoans" method="GET" action="http://localhost:3000/prestamos" target = "dummyframe">
+                                    <input type = "submit" value = "Mostrar préstamos">
+                                </form>
+                                <div class = "table-wrapper">
+                                    <div class = "table-scroll">
+                                            <table id = "loan-table">
+                                                    <tr class = "headers">
+                                                        <th class = "attribute-title">ID</th>
+                                                        <th class = "attribute-title">ID bibliotecario</th>
+                                                        <th class = "attribute-title">ID maestro</th>
+                                                        <th class = "attribute-title">ID estudiante</th>
+                                                        <th class = "attribute-title">ID libro</th>
+                                                        <th class = "attribute-title">Fecha de prestamo</th>
+                                                        <th class = "attribute-title">Fecha de entrega</th>
+                                                    </tr>
+                                            </table>
+                                        </div>
+                                </div>
+            
+                                <form id = "getLoanById" method="GET" action="http://localhost:3000/prestamos/" target = "dummyframe">
+                                    <input id = "loan_searchId" name = "loan_id" placeholder = "Buscar por ID" target = "dummyframe" required>
+                                    <input type = "submit" value = "Buscar préstamo">
+                                </form>
+                                    
+                                <table id = "loan-table-search">
+                                        <tr class = "headers">
+                                            <th class = "attribute-title">ID</th>
+                                            <th class = "attribute-title">ID bibliotecario</th>
+                                            <th class = "attribute-title">ID maestro</th>
+                                            <th class = "attribute-title">ID estudiante</th>
+                                            <th class = "attribute-title">ID libro</th>
+                                            <th class = "attribute-title">Fecha de prestamo</th>
+                                            <th class = "attribute-title">Fecha de entrega</th>
+                                        </tr>
+                                </table>
+            
+                            </div>
+                            <div class="grid-item">
+                                    <form id = "addLoan" method="POST" action="http://localhost:3000/prestamos" target="dummyframe">
+                                        <h1 class = "form-title">Formulario para préstamos</h1>
+                                        <input id = "loan_insertLibrarianId"        name = "loan_librarianId"    placeholder = "ID bibliotecario*"  requiered><br>
+                                        <input id = "loan_insertTeacherId"          name = "loan_teacherId"      placeholder = "ID maestro*"        requiered><br>
+                                        <input id = "loan_insertStudentId"          name = "loan_studentId"      placeholder = "ID estudiante*"     requiered><br>
+                                        <input id = "loan_insertBookId"             name = "loan_bookId"         placeholder = "ID libror*"         requiered><br>
+                                        <input id = "loan_insertLoanDate"           name = "loan_loanDate"       placeholder = "Fecha de préstamo*" requiered><br>
+                                        <input id = "loan_insertReturnDate"         name = "loan_returnDate"     placeholder = "Fecha de entrega"           ><br>
+                                        <input type = "submit"                      value = "Registrar"> 
+                                    </form>
+                            </div>
+                        </div> 
         </div>
 </body>
 </html> 

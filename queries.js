@@ -54,6 +54,17 @@ const getBooks = (request, response) => {
   response.status(200).json(results.rows)
   })
 }
+ /**
+  * Generar objeto JSON de préstamos
+  */
+ const getLoans = (request, response) => {
+  pool.query('SELECT * FROM prestamo ORDER BY id_prestamo ASC', (error, results) => {
+      if(error) {
+          throw error
+      }
+  response.status(200).json(results.rows)
+  })
+}
 /**
  * Insertar valores del formulario en la tabla "libros"
  */
@@ -111,7 +122,7 @@ const addStudent = (request, response) => {
   })
 }
 /**
- * Insertar valores del formulario en la tabla "estudiante"
+ * Insertar valores del formulario en la tabla "bibliotecario"
  */
 const addLibrarian = (request, response) => {
   const nombre        = request.body.librarian_name
@@ -125,6 +136,26 @@ const addLibrarian = (request, response) => {
            throw error
        }
        response.status(201).send('Bibliotecario añadido')
+  })
+}
+/**
+ * Insertar valores del formulario en la tabla "préstamo"
+ */
+const addLoan = (request, response) => {
+  const id_bibliotecario = request.body.loan_librarianId
+  const id_maestro       = request.body.loan_teacherId
+  const id_estudiante    = request.body.loan_studentId
+  const id_libro         = request.body.loan_bookId
+  const fecha_prestamo   = request.body.loan_loanDate
+  const fecha_entrega    = request.body.loan_returnDate
+
+  pool.query("INSERT INTO prestamo (id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega) VALUES ($1, $2, $3, $4, $5, $6)",
+  [id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega],
+  (error, results) => {
+       if (error) {
+           throw error
+       }
+       response.status(201).send('Préstamo añadido')
   })
 }
 /**
@@ -179,6 +210,19 @@ const getLibrarianById = (request, response) => {
     response.status(200).json(results.rows)
   })
 }
+  /**
+ * Consultas individuales para préstamos
+ */
+const getLoanById = (request, response) => {
+  const id_prestamo = parseInt(request.params.id_prestamo)
+
+  pool.query('SELECT * FROM prestamo WHERE id_prestamo = $1', [id_prestamo], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
 
 
 /**
@@ -199,5 +243,9 @@ module.exports = {
 
     getLibrarians,
     addLibrarian,
-    getLibrarianById
+    getLibrarianById,
+
+    getLoans,
+    addLoan,
+    getLoanById,
   }
