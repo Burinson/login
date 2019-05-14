@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 </head>
 <body>
     <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
@@ -299,8 +300,17 @@
                                         <h1 class = "form-title">¿Devolución?</h1>
                                         <input id = "return_insertLoanId"        name = "return_loanId"           placeholder = "ID prestamo*"       requiered><br>
                                         <input id = "return_insertReturnDate"    type = "date"                  name = "return_returnDate"           placeholder = "Fecha de entrega*"   requiered><br>
-                                        <input type = "submit"                 value = "Registrar"> 
+                                        <input type = "submit"                   value = "Registrar"> 
                                     </form>
+
+                                    
+                                    <form id = "getTicket" method="GET" action="http://localhost:3000/ticket/" target = "dummyframe">
+                                        <h1 class = "form-title">Generar ticket</h1>
+                                        <input id = "ticket_searchId" name = "ticket_id" placeholder = "ID de préstamo" target = "dummyframe" required>
+                                        <input type = "submit" value = "Mostrar ticket">
+                                    </form>
+
+                                    
                             </div>
                         </div> 
         </div>

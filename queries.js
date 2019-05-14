@@ -246,6 +246,20 @@ const getLoanById = (request, response) => {
     response.status(200).json(results.rows)
   })
 }
+  /**
+ * GET TICKET
+ */
+const getTicket = (request, response) => {
+  const id_prestamo = parseInt(request.params.id_prestamo)
+
+    pool.query('SELECT * FROM (SELECT p.*, e.id AS id_estudiante, e.carrera, e.nombre AS nombre_estudiante, e.apellido AS apellido_estudiante, e.correo AS correo_estudiante, b.nombre AS nombre_bibliotecario, b.apellido AS apellido_bibliotecario, b.contraseña, m.departamento, m.nombre AS nombre_maestro, m.apellido AS apellido_maestro, m.correo AS correo_maestro, l.* FROM prestamo p LEFT JOIN estudiante e ON p.id_estudiante = e.id LEFT JOIN bibliotecario b ON p.id_bibliotecario = b.id LEFT JOIN libros l ON p.id_libro = l.id LEFT JOIN maestro m ON p.id_maestro = m.id) AS A WHERE A.id_prestamo = $1', [id_prestamo], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+
+}
 
 
 /**
@@ -272,5 +286,7 @@ module.exports = {
     addLoan,
     getLoanById,
 
-    addReturn
+    addReturn,
+
+    getTicket
   }
