@@ -164,8 +164,8 @@ $(document).ready(function(){
                 tr.append("<td>" + json[i].id_estudiante    + "</td>");
                 tr.append("<td>" + json[i].id_libro         + "</td>");
                 tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
-                tr.append("<td>" + json[i].fecha_entrega    + "</td>");
                 tr.append("<td>" + json[i].hora_prestamo    + "</td>");
+                tr.append("<td>" + json[i].fecha_entrega    + "</td>");
                 tr.append("<td>" + json[i].hora_entrega     + "</td>");
                 $('#loan-table').append(tr);
             }
@@ -333,8 +333,8 @@ $(document).ready(function(){
                         tr.append("<td>" + json[i].id_estudiante    + "</td>");
                         tr.append("<td>" + json[i].id_libro         + "</td>");
                         tr.append("<td>" + json[i].fecha_prestamo   + "</td>");
-                        tr.append("<td>" + json[i].fecha_entrega    + "</td>");
                         tr.append("<td>" + json[i].hora_prestamo   + "</td>");
+                        tr.append("<td>" + json[i].fecha_entrega    + "</td>");
                         tr.append("<td>" + json[i].hora_entrega    + "</td>");
                         $('#loan-table-search').append(tr);
                 }
@@ -387,8 +387,8 @@ $(document).ready(function(){
                     "Préstamo" + " " + s_id_prestamo + "\n" +
                     "\n" +
                     "Fecha de préstamo: " + " " + s_fecha_prestamo + "\n" +
-                    "Fecha de entrega: " + " " + s_fecha_entrega + "\n\n" +
-                    "Hora de préstamo: " + " " + s_hora_prestamo + "\n" +
+                    "Hora de préstamo: " + " " + s_hora_prestamo + "\n\n" +
+                    "Fecha de devolución: " + " " + s_fecha_entrega + "\n" +
                     "Hora de devolución: " + " " + s_hora_entrega + "\n" +
                     "\n\n\n" +
                     "Estudiante: \n" +
@@ -431,7 +431,7 @@ $(document).ready(function(){
 
                     } else {
                         if (diff > 14*day) {
-                            var penalization = (dif - 7)/day;
+                            var penalization = (diff - 7)/day;
                             body += "Penalización de " + Math.floor(penalization).toString() + " " + "días \n" +
                             "Monto a pagar: $" + Math.floor(penalization*5).toString() + "\n\n";  
                         }

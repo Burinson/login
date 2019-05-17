@@ -157,8 +157,8 @@ const addLoan = (request, response) => {
   else if (id_estudiante == "")
       id_estudiante = null;
     
-  pool.query("INSERT INTO prestamo (id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega, hora_prestamo, hora_entrega) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
-    [id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, fecha_entrega, hora_prestamo, hora_entrega],
+  pool.query("INSERT INTO prestamo (id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, hora_prestamo, fecha_entrega, hora_entrega) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+    [id_bibliotecario, id_maestro, id_estudiante, id_libro, fecha_prestamo, hora_prestamo, fecha_entrega, hora_entrega],
     (error, results) => {
          if (error) {
              throw error
